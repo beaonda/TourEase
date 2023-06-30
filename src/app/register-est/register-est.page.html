@@ -1,0 +1,108 @@
+
+
+<ion-content fullscreen class="ion-padding login-page">
+  
+  <div class="register-header">
+    <h1 class="register-title">Register Now</h1>
+    <p class="register-subtext">Embark on Your Journey with Us! Join TourEase and Unlock a<br> World of Travel Possibilities.</p>
+  </div>
+
+
+
+  <ion-list class="register-form">
+    <!-- First row -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform" position="floating">Last Name<span class="required">*</span></ion-label>
+          <ion-input type="text" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform" position="floating">First Name<span class="required">*</span></ion-label>
+          <ion-input type="text" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform"position="floating">Middle Name</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- Second row -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label  class="labelform">Age<span class="required">*</span></ion-label>
+          <ion-input type="number" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform">Gender<span class="required">*</span></ion-label>
+          <ion-select required>
+            <ion-select-option value="male">Male</ion-select-option>
+            <ion-select-option value="female">Female</ion-select-option>
+            <ion-select-option value="other">Other</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- Third row -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform">Contact Number<span class="required">*</span></ion-label>
+          <ion-input type="tel" pattern="^\+63\d{10}$" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform">Email Address<span class="required">*</span></ion-label>
+          <ion-input type="email" required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- Fourth row -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform">Exact Address<span class="required">*</span></ion-label>
+          <ion-textarea required></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- Fifth row -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform" position="floating">Username<span class="required">*</span></ion-label>
+          <ion-input type="text" required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- Sixth row -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform" position="floating">Password<span class="required">*</span></ion-label>
+          <ion-input type="password" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform" position="floating">Re-enter Password<span class="required">*</span></ion-label>
+          <ion-input type="password" required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-button expand="block" shape="round" size="large" color="primary" class="register-button">Register</ion-button>
+</ion-content>

@@ -1,0 +1,96 @@
+.login-page {
+    --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/background.png') no-repeat center center;
+    --background-size: cover;
+    
+  }
+
+
+  
+  .login-container {
+    max-width: 500px;
+    margin-left: 37%;
+    margin-top: 24%;
+    text-align: center;
+  }
+ 
+  /*
+  .logo {
+    margin-bottom: 2rem;
+  
+    ion-img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+  */
+
+
+  ion-item ion-input{
+    --highlight-color-focused:#6ac5f6;
+    --color:#787575;
+      margin-bottom: 10px;
+      font-size: 22px;
+  }
+
+  .login-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding:1.50rem;
+
+  }
+  
+  .login-button {
+    margin-top: 1.5rem;
+    color: #ffffff;
+  }
+
+  .forgot-password {
+    margin-left: 70%;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .forgot-password a {
+    color: #272929;
+  }
+
+  .Register{
+    margin-top: 5%;
+    margin-bottom: 8%;
+  }
+
+  .Register a{
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .Through-google a{
+    color:#272929;
+    text-decoration: none;
+
+  }
+
+
+  ion-item {
+    ion-label {
+      font-size: 100px; /* Adjust the font size to your desired value */
+    }
+  }
+
+
+
+  // PHONE RESPONSIVE SIZES!!! -------------------------------------------------------------------
+  @media (max-width: 576px), (max-width:660px) {
+    .login-page {
+      --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/bgphone1.png') no-repeat center bottom ;
+      --background-size: 50% 50%;
+      
+    }
+    .login-container {
+      max-width: 600px;
+      margin-left: 2%;
+      margin-top: 90%;
+      text-align: center;
+    }
+
+  }

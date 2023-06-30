@@ -1,0 +1,109 @@
+.login-page {
+    --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/bgreg.png') no-repeat center center;
+    --background-size: cover; 
+
+   
+  }
+  
+
+
+
+
+  .register-header {
+    text-align: right;
+    padding: 2rem;
+    margin-right: 4%;
+    margin-bottom: -15%;
+
+  }
+  
+  .register-title {
+    font-size: 5.5rem;
+    font-weight: bolder;
+    margin-bottom: -20px;
+    color: #21757F;
+  }
+  
+  .register-subtext {
+    font-size: 1.7rem;
+    color: #032023;
+  }
+
+
+
+
+
+.register-form  {
+    width:55%;
+    margin-top:15%;
+    margin-left:37%;
+
+  }
+
+ion-col{
+    margin-top: 2%;
+}
+
+.labelform{
+    font-size: 22px;
+    color: #737373;
+}
+
+.required{
+    color:red;
+    margin-left: 10px;
+}
+
+.register-button{
+    max-width: 200px;
+    margin-left: 82% ;
+    margin-top: 2%;
+}
+
+@media (max-width: 576px), (max-width:660px) {
+
+  .login-page {
+    --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/longregphone.png') no-repeat center top;
+    --background-cover: cover;
+    
+    
+  }
+
+  
+  .register-header {
+    text-align: right;
+    padding: 2rem;
+    margin-right: -5%;
+    margin-top: 50%;
+  }
+  
+  .register-title {
+    font-size: 3.4rem;
+    font-weight: bolder;
+    margin-bottom: -10px;
+    color: #21757F;
+  }
+  
+  .register-subtext {
+    width: 55%;
+    margin-left: 43%;
+    font-size: 1.3rem;
+    color: #032023;
+  }
+
+  
+.register-form  {
+  width:50%;
+  margin-top:15%;
+  margin-left:10%;
+
+}
+
+.register-button{
+  max-width: 300px;
+  margin-left: 25% ;
+  margin-top: 10%;
+}
+
+
+}
