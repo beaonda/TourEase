@@ -1,5 +1,5 @@
 .login-page {
-    --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/background.png') no-repeat center center;
+    --background: url('/assets/background.png') no-repeat center center;
     --background-size: cover;
     
   }
@@ -82,7 +82,7 @@
   // PHONE RESPONSIVE SIZES!!! -------------------------------------------------------------------
   @media (max-width: 576px), (max-width:660px) {
     .login-page {
-      --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/bgphone1.png') no-repeat center bottom ;
+      --background: url('/assets/bgphone1.png') no-repeat center bottom ;
       --background-size: 50% 50%;
       
     }

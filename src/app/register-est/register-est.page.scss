@@ -1,5 +1,5 @@
 .login-page {
-    --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/bgreg.png') no-repeat center center;
+    --background: url('/assets/bgreg.png') no-repeat center center;
     --background-size: cover; 
 
    
@@ -63,7 +63,7 @@ ion-col{
 @media (max-width: 576px), (max-width:660px) {
 
   .login-page {
-    --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/longregphone.png') no-repeat center top;
+    --background: url('/assets/longregphone.png') no-repeat center top;
     --background-cover: cover;
     
     
