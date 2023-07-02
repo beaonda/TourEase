@@ -5,22 +5,35 @@
    
   } */
 
+
+
   .background{
+    
     position:relative;
-    left:-20px;
-    top:-20px;
-margin-bottom: -30px;
+    left:-30px;
+    top:-2%;
+    
+    margin-bottom: -50%;
+    z-index: 1;
+    height: 100%;
+    max-width: auto;
+   
+  
+
+    
 
     
       }
 
 
   .register-header {
+    position:relative;
     text-align: right;
     padding: 2rem;
     margin-right: 4%;
     margin-bottom: -15%;
-    margin-top:-55%
+  margin:auto;
+    z-index: 2;
 
   }
   
@@ -41,10 +54,11 @@ margin-bottom: -30px;
 
 
 .register-form  {
+  position: relative;
     width:55%;
-    margin-top:15%;
+    margin-top:1%;
     margin-left:37%;
-
+z-index: 2;
   }
 
 ion-col{
@@ -62,12 +76,14 @@ ion-col{
 }
 
 .register-button{
+  position: relative;
     max-width: 200px;
     margin-left: 82% ;
     margin-top: 2%;
+    z-index: 2;
 }
 
-@media (max-width: 576px), (max-width:660px) {
+@media (max-width: 576px), (max-width:800px) {
 
 /*   .login-page {
     --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/longregphone.png') no-repeat center top;
@@ -81,8 +97,8 @@ ion-col{
 } */
 
 .background{
-  content: url("/assets/bgregphone.png");
-  
+  content: url("/assets/bg-reg-p.png");
+  max-width: fit-content;
 
 
   
@@ -93,7 +109,8 @@ ion-col{
     text-align: right;
     padding: 2rem;
     margin-right: -5%;
-    margin-top: -150%;
+    margin-top: -90%;
+
   }
   
   .register-title {
@@ -110,18 +127,26 @@ ion-col{
     color: #032023;
   }
 
+
+
   
 .register-form  {
-  width:55%;
+  width:100%;
   margin-top:10%;
-  margin-left:10%;
+  margin-left:-15%;
+
+
+
   
 
-}
-.labelform{
 
-  margin-right:30%;
 }
+
+
+ion-col{
+margin-left: 25%;
+}
+
 
 .register-button{
   max-width: 300px;
