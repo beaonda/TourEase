@@ -1,6 +1,7 @@
 .login-page {
-    --background: url('/assets/background.png') no-repeat center center;
+    --background: url('/assets/bg-login.png') no-repeat center center;
     --background-size: cover;
+    --max-width: fit-content;
     
   }
 
@@ -8,21 +9,23 @@
   
   .login-container {
     max-width: 500px;
-    margin-left: 37%;
-    margin-top: 24%;
+   margin:auto;
+   
     text-align: center;
   }
  
-  /*
+  
   .logo {
     margin-bottom: 2rem;
+
   
-    ion-img {
-      max-width: 200px;
-      max-height: 200px;
-    }
   }
-  */
+  ion-img {
+    max-width: 800px;
+    max-height: 800px;
+    margin-left: -50px;
+  }
+  
 
 
   ion-item ion-input{
@@ -33,7 +36,7 @@
   }
 
   .login-form {
-    background-color: #ffffff;
+    background-color: #ffffff00;
     border-radius: 8px;
     padding:1.50rem;
 
@@ -80,17 +83,35 @@
 
 
   // PHONE RESPONSIVE SIZES!!! -------------------------------------------------------------------
-  @media (max-width: 576px), (max-width:660px) {
+  @media (max-width: 576px), (max-width:800px) {
     .login-page {
-      --background: url('/assets/bgphone1.png') no-repeat center bottom ;
-      --background-size: 50% 50%;
+      --background: url('/assets/bgp-login-try.png') no-repeat center bottom ;
+      --background-size:100% 100%;
       
     }
     .login-container {
-      max-width: 600px;
-      margin-left: 2%;
-      margin-top: 90%;
+      max-width: 400px;
+      max-height: 100px;
+      margin:auto;
+      margin-top: 5%;
       text-align: center;
     }
+
+    ion-img {
+      max-width: 300px;
+      max-height: 210px;
+      margin-left: 10px;
+      margin-bottom: -100px;
+    }
+
+    .forgot-password {
+      margin-left: 60%;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+      
+
+
+  
 
   }
