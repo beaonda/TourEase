@@ -2,7 +2,7 @@
 
 <ion-content class="ion-padding login-page">
 
-  <img class="background" src="assets/bp-reg-est.png" style="top:-1%;"/>
+  <img class="background" src="assets/bp-reg-est.png"/>
   <div class="register-header">
     <h1 class="register-title">Register Establishment</h1>
     <p class="register-subtext">Boost Your Business with TourEase! Register your establishment and unlock a world of promotion opportunities.</p>
@@ -14,6 +14,7 @@
     <!-- First row -->
     <ion-row>
       <ion-col>
+        <h1 style="font-size: 20px; color: #21757F; font-weight: bold;">ESTABLISHMENT INFORMATION</h1>
         <ion-item>
           <ion-label class="labelform" position="floating">Name of Establishment<span class="required">*</span></ion-label>
           <ion-input type="text" required></ion-input>
@@ -22,42 +23,7 @@
     </ion-row>
 
 
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label class="labelform">Your position in this establishment<span class="required">*</span></ion-label>
-          <ion-select required>
-            <ion-select-option value="Owner">Owner</ion-select-option>
-            <ion-select-option value="Representatives">Representatives</ion-select-option>
-            <ion-select-option value="other">Other</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label class="labelform">Your position in this establishment<span class="required">*</span></ion-label>
-          <ion-select required>
-            <ion-select-option value="Owner">Owner</ion-select-option>
-            <ion-select-option value="Representatives">Representatives</ion-select-option>
-            <ion-select-option value="other">Other</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label class="labelform">Your position in this establishment<span class="required">*</span></ion-label>
-          <ion-select required>
-            <ion-select-option value="Owner">Owner</ion-select-option>
-            <ion-select-option value="Representatives">Representatives</ion-select-option>
-            <ion-select-option value="other">Other</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+    
     <ion-row>
       <ion-col>
         <ion-item>
@@ -85,37 +51,124 @@
 
     <!-- Fourth row -->
     <ion-row>
+      
       <ion-col>
+        <h1 style="font-size: 20px; color: #21757F; font-weight: bold;">OPERATING HOURS</h1>
         <ion-item>
-          <ion-label class="labelform">Exact Address<span class="required">*</span></ion-label>
-          <ion-textarea required></ion-textarea>
+          <ion-label class="labelform" position="floating">From<span class="required">*</span></ion-label>
+         
+          <ion-select required>
+            <ion-select-option value="Owner">Owner</ion-select-option>
+            <ion-select-option value="Representatives">Representatives</ion-select-option>
+            <ion-select-option value="other">Other</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      
+      <ion-col>
+        <ion-item class="to">
+          <ion-label class="labelform" position="floating">To<span class="required">*</span></ion-label>
+    
+          <ion-select required>
+            <ion-select-option value="Owner">Owner</ion-select-option>
+            <ion-select-option value="Representatives">Representatives</ion-select-option>
+            <ion-select-option value="other">Other</ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
+  
 
     <!-- Fifth row -->
+    <ion-row class="try">
+      <ion-col class ="tablecol">
+        <h1 style="font-size: 20px; color: #21757F; font-weight: bold;">CONTACT PERSON</h1>
+        <ion-item class="table-item">
+          <ion-grid class="table">
+            <ion-row class="table-row">
+              <ion-col class="columns" style="background-color: #21757F; color:white;font-weight: bolder;text-align: center;">Name</ion-col>
+              <ion-col class="columns"style="background-color: #21757F; color:white;font-weight: bolder;text-align: center;">Position</ion-col>
+              <ion-col class="columns"style="background-color: #21757F; color:white;font-weight: bolder;text-align: center;">Contact No.</ion-col>
+              <ion-col class="columns"style="background-color: #21757F; color:white;font-weight: bolder;text-align: center;">Address</ion-col>
+            </ion-row>
+            <ion-row class="table-row">
+             <ion-col class="columns"style="text-align: center;">Kaila Guerrero</ion-col>   
+             <ion-col class="columns"style="text-align: center;">CEO</ion-col>   
+             <ion-col class="columns"style="text-align: center;">123456789</ion-col>   
+             <ion-col class="columns"style="text-align: center;">Earth City</ion-col>   
+
+
+
+            </ion-row>
+
+          </ion-grid>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <br><br>
+    <ion-button expand="block" shape="round" size="medium" color="primary" class="regbutton">Add Contact Person</ion-button>
+
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform" position="floating">Username<span class="required">*</span></ion-label>
+          <br><br><br>
+          <ion-label class="labelform" position="floating">External Website/Links<span class="required">*</span></ion-label>
+          <ion-input type="text" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <br><br><br>
+        <ion-item class="business">
+          <ion-label class="labelform" position="floating">Business Email<span class="required">*</span></ion-label>
           <ion-input type="text" required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
 
+    
+
     <!-- Sixth row -->
     <ion-row>
       <ion-col>
+        <br><h1 style="font-size: 20px; color: #21757F; font-weight: bold;">CATEGORY</h1><br>
         <ion-item>
-          <ion-label class="labelform" position="floating">Password<span class="required">*</span></ion-label>
-          <ion-input type="password" required></ion-input>
+          <ion-label>Category</ion-label>
+          <ion-select [(ngModel)]="selectedCategory.name" (ionChange)="onCategoryChange()">
+            <ion-select-option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</ion-select-option>
+          </ion-select>
         </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label class="labelform" position="floating">Re-enter Password<span class="required">*</span></ion-label>
-          <ion-input type="password" required></ion-input>
-        </ion-item>
+
+      
+      
+  
+        <form (ngSubmit)="onSubmit()">
+           <!-- Render the appropriate form fields based on the selected category -->
+          <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+             <!-- Render resort form fields -->
+            <ion-label position="floating">Name</ion-label>
+            <ion-input [(ngModel)]="resortForm.name" name="name" type="text" required></ion-input>
+          </ion-item>
+          <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input [(ngModel)]="resortForm.email" name="email" type="email" required></ion-input>
+          </ion-item>
+            
+          <ion-item *ngIf="selectedCategory.name == 'ESTABLISHMENTS'">
+           <!--  Render establishments form fields -->
+          </ion-item>
+      
+          <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+            <!-- Render heritage form fields -->
+          </ion-item>
+      
+      
+          <ion-button expand="full" type="submit">Submit</ion-button>
+        </form>
+
+
+
+
       </ion-col>
     </ion-row>
   </ion-list>
