@@ -6,13 +6,17 @@
   } */
 
 
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
 
   .background{
     
     position:relative;
     left:-30px;
-    top:-2%;
-    
+    top: -6%;
     margin-bottom: -50%;
     z-index: 1;
     height: 100%;
@@ -37,19 +41,36 @@
 
   }
   
+
+
+  .to{
+margin-top: 54px;
+
+  }
   .register-title {
-    font-size: 5.5rem;
+    font-size: 5.4rem;
     font-weight: bolder;
     margin-bottom: -20px;
     color: #21757F;
   }
   
   .register-subtext {
+    width: 50%;
+    margin-left:50%;
     font-size: 1.7rem;
     color: #032023;
     
   }
 
+  .table-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .columns{
+    padding:10px;
+    flex: 1 0 10%;
+  }
 
 
 
@@ -58,7 +79,7 @@
   position: relative;
     width:55%;
     margin-top:1%;
-    margin-left:37%;
+    margin-left:20%;
 z-index: 2;
   }
 
@@ -79,10 +100,20 @@ ion-col{
 .register-button{
   position: relative;
     max-width: 200px;
-    margin-left: 82% ;
-    margin-top: 2%;
+    margin-left: 70% ;
+    margin-top: 3%;
     z-index: 2;
 }
+
+.regbutton{
+  position: relative;
+    max-width: 200px;
+    margin-left: 76% ;
+    margin-top: 3%;
+    z-index: 2;
+
+}
+
 
 @media (max-width: 576px), (max-width:800px) {
 
@@ -106,23 +137,23 @@ ion-col{
 
 
   .register-header {
-    text-align: right;
+    text-align: center;
     padding: 2rem;
     margin-right: -5%;
-    margin-top: -90%;
+    top: -40%;
 
   }
   
   .register-title {
-    font-size: 3.4rem;
+    font-size: 2.7rem;
     font-weight: bolder;
     margin-bottom: -10px;
     color: #21757F;
   }
-  
+    
   .register-subtext {
     width: 70%;
-    margin-left: 25%;
+    margin-left: 14%;
     font-size: 1.3rem;
     color: #032023;
   }
@@ -131,16 +162,40 @@ ion-col{
 
   
 .register-form  {
-  width:100%;
-  margin-top:10%;
-  margin-left:-15%;
+  width:105%;
+  top:-40%;
+margin-left: -20%;
 
 
-
+.labelform{
+  font-size: 15px;
+  color: #737373;
+}
   
 
 
 }
+
+.table-row{
+  display: flex;
+  flex-wrap:nowrap;
+ 
+ 
+}
+
+.columns{
+  padding: 1px;
+  font-size: 9px;
+  flex: 4 0 25%;
+  margin-left: 0.5%;
+
+  
+}
+
+.to{
+    margin-top:-10px;
+  
+    }
 
 
 ion-col{
@@ -150,8 +205,20 @@ margin-left: 25%;
 
 .register-button{
   max-width: 300px;
-  margin-left: 25% ;
-  margin-top: 10%;
+  margin-left: 3% ;
+  top: -20%;
+}
+
+.regbutton{
+  padding: 1px;
+  font-size: 10px;
+  max-width: 200px;
+  margin-left: 35% ;
+  top: -20%;
+}
+
+.business{
+  margin-top: -50px;
 }
 
 
