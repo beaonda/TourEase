@@ -1,46 +1,71 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Component} from '@angular/core';
 @Component({
   selector: 'app-register-est',
   templateUrl: './register-est.page.html',
   styleUrls: ['./register-est.page.scss'],
 })
+
+
 export class RegisterEstPage{
 
-  constructor(private alertController: AlertController) {}
+public selectedCategory = {
+    name: 'RESORT',
+    form: 'resortForm'
+}
 
-  openDatePicker() {
-    // Open the date picker logic here
-    // You can use Ionic's DatePicker component or a custom implementation
-    // Example: You can show an alert with the date picker options
-    this.alertController.create({
-      header: 'Select Date',
-      inputs: [
-        {
-          name: 'date',
-          type: 'date',
-          label: 'Date',
-          value: '',
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Canceled');
-          },
-        },
-        {
-          text: 'OK',
-          handler: (data) => {
-            console.log('Selected Date:', data.date);
-          },
-        },
-      ],
-    }).then((alert) => {
-      alert.present();
-    });
+public newCat =
+  {name: '', form: ''}
+      
+  
+  categories = [
+    { name: 'RESORT', form: 'resortForm' },
+    { name: 'ESTABLISHMENTS', form: 'establishmentsForm' },
+    { name: 'HERITAGE', form: 'heritageForm' }
+  ];
+  
+  resortForm = {  
+
+    name: '',
+    email: '',
+    // Define fields for resort form
+    // Example: name: string, email: string, etc.
+  };
+
+  establishmentsForm = {
+    // Define fields for establishments form
+  };
+
+  heritageForm = {
+    // Define fields for heritage form
+  };
+
+  constructor() {}
+  
+
+  onCategoryChange(){
+    // Reset the form fields based on the selected category
+
+   /*  this.selectedCategory = {
+      name:this.selectedCategory.name ,
+      form:this.selectedCategory.form
+    } */ 
+  }
+
+  onSubmit() {
+    // Handle form submission based on the selected category
+    switch (this.selectedCategory.name) {
+      case "RESORT":
+        // Handle resort form submission
+        break;
+      case "ESTABLISHMENTS":
+        // Handle establishments form submission
+        break;
+      case "HERITAGE":
+        // Handle heritage form submission
+        break;
+      default:
+        alert(this.selectedCategory.name);
+        break;
+    }
   }
 }
