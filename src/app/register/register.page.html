@@ -36,8 +36,8 @@
     <!-- Second row -->
     <ion-row>
       <ion-col>
-        <ion-item>
-          <ion-label class="labelform">Birthday<span class="required">*</span></ion-label>
+        <ion-item style="margin-top: -2.5px;">
+          <ion-label class="labelform" >Birthday<span class="required">*</span><ion-label class="labelform" style="color: black;">yyyy/dd/mm</ion-label></ion-label>
           <ion-button expand="full" color="light" (click)="openDatePicker()">
             Select Date
           </ion-button>
@@ -45,13 +45,13 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label  class="labelform">Age<span class="required">*</span></ion-label>
+          <ion-label  class="labelform" position="floating">Age<span class="required">*</span></ion-label>
           <ion-input type="number" required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform">Gender<span class="required">*</span></ion-label>
+          <ion-label class="labelform" position="floating">Gender<span class="required">*</span></ion-label>
           <ion-select required>
             <ion-select-option value="male">Male</ion-select-option>
             <ion-select-option value="female">Female</ion-select-option>
@@ -65,13 +65,13 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform">Contact Number<span class="required">*</span></ion-label>
+          <ion-label class="labelform" position="floating">Contact Number<span class="required">*</span></ion-label>
           <ion-input type="tel" pattern="^\+63\d{10}$" required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform">Email Address<span class="required">*</span></ion-label>
+          <ion-label class="labelform" position="floating">Email Address<span class="required">*</span></ion-label>
           <ion-input type="email" required></ion-input>
         </ion-item>
       </ion-col>
@@ -81,7 +81,7 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform">Exact Address<span class="required">*</span></ion-label>
+          <ion-label class="labelform" position="floating">Exact Address<span class="required">*</span></ion-label>
           <ion-textarea required></ion-textarea>
         </ion-item>
       </ion-col>
@@ -107,7 +107,7 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform" position="floating">Re-enter Password<span class="required">*</span></ion-label>
+          <ion-label class="labelform" position="floating"  errorText="Passwords don't match">Re-enter Password<span class="required">*</span></ion-label>
           <ion-input type="password" required></ion-input>
         </ion-item>
       </ion-col>
