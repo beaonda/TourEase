@@ -8,7 +8,6 @@ const routes: Routes = [
   },
   {
     path: '',
-
     redirectTo: 'login',
     pathMatch: 'full'
   },
@@ -28,6 +27,11 @@ const routes: Routes = [
     path: 'register-est',
     loadChildren: () => import('./register-est/register-est.module').then( m => m.RegisterEstPageModule)
   },
+  {
+    path: 'verify',
+    loadChildren: () => import('./verify/verify.module').then( m => m.VerifyPageModule)
+  },
+
 
 ];
 

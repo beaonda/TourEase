@@ -1,21 +1,30 @@
-.login-page {
-
-    --background: url('/assets/bgreg.png') no-repeat center center;
-
+/* .login-page {
+    --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/bgreg.png') no-repeat center center;
     --background-size: cover; 
 
    
-  }
-  
+  } */
 
+  .background{
+    position:relative;
+    left:-20px;
+    top:-20px;
+margin-bottom: -30px;
+z-index: 1;
+color: white;
 
+    
+      }
 
 
   .register-header {
+    position:relative;
     text-align: right;
     padding: 2rem;
     margin-right: 4%;
     margin-bottom: -15%;
+    margin-top:-55%;
+    z-index:2;
 
   }
   
@@ -35,10 +44,13 @@
 
 
 
+
 .register-form  {
+  position:relative;
     width:55%;
     margin-top:15%;
     margin-left:37%;
+    z-index: 2;
 
   }
 
@@ -57,28 +69,40 @@ ion-col{
 }
 
 .register-button{
+  position: relative;
     max-width: 200px;
     margin-left: 82% ;
     margin-top: 2%;
+    z-index: 2;
 }
 
 @media (max-width: 576px), (max-width:660px) {
 
-  .login-page {
-
-    --background: url('/assets/longregphone.png') no-repeat center top;
-
+/*   .login-page {
+    --background: url('C:/Users/kaila/Desktop/Projects/try-app/src/assets/longregphone.png') no-repeat center top;
     --background-cover: cover;
     
     
-  }
+  } */
+
+/*   img {
+    content: url("/path/here/to/image.png");
+} */
+
+.background{
+  content: url("/assets/bgp-reg.png");
+  color: white;
+
 
   
+    }
+
+
   .register-header {
     text-align: right;
     padding: 2rem;
     margin-right: -5%;
-    margin-top: 50%;
+    margin-top: -150%;
   }
   
   .register-title {
@@ -89,18 +113,23 @@ ion-col{
   }
   
   .register-subtext {
-    width: 55%;
-    margin-left: 43%;
+    width: 70%;
+    margin-left: 25%;
     font-size: 1.3rem;
     color: #032023;
   }
 
   
 .register-form  {
-  width:50%;
-  margin-top:15%;
+  width:55%;
+  margin-top:10%;
   margin-left:10%;
+  
 
+}
+.labelform{
+
+  margin-right:30%;
 }
 
 .register-button{

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      HOME
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,17 +9,77 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">HOME</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container1">
+    <strong>NASUGBU BATANGAS</strong>
+    <p><br>Unveiling the Hidden Gems of Nasugbu! <br> Get ready to be captivated by the amazing tourist spots this charming town has to offer <br>
+      Dive into the crystal-clear waters of Calayo Beach, hike through the lush trails of Mount Batulao, and Immerse yourself in history at the century-old <br>
+      Cape Santiago Lighthouse. Indulge in delectable seafood delights at Barangay Wawa or experience the thrill of cliff diving at Layag Layag Beach. <br>
+      Nasugbu is a treasure trove of unforgettable experiences. Start your adventure today and uncover the wonders that await!</p>
+      <ion-button shape="round">Explore</ion-button>
   </div>
 
-
-
-
-  
 </ion-content>
+
+<!-- <ion-slides [options]="slideOptsOne" #slideWithNav  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+  <ion-slide *ngFor="let s of sliderOne.slidesItems">
+      <img src="../../assets/background.png"/>
+   </ion-slide>
+</ion-slides>
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title>
+      Ion-Sliders with Custom Navigation
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <h5>Ionic Ion Slider with Navigation Arrows</h5>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1">
+        <span class="slider-nav arrow-prev" (click)="slidePrev(sliderOne,slideWithNav)">
+          <div class="prev-icon-custom custon-nav" [class.disabled]="sliderOne.isBeginningSlide"></div>
+        </span>
+      </ion-col>
+      <ion-col size="10">
+
+        <ion-slides pager="false" [options]="slideOptions" #slideWithNav
+          (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+          <ion-slide *ngFor="let s of sliderOne.slidesItems">
+            <img src="../../assets/background.png">
+          </ion-slide>
+        </ion-slides>
+
+      </ion-col>
+      <ion-col size="1">
+        <span class="slider-nav arrow-next" (click)="slideNext(sliderOne,slideWithNav)">
+          <div class="next-icon-custom custon-nav" [class.disabled]="sliderOne.isEndSlide"></div>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+ -->
+
+<!-- <ion-content [fullscreen]="true">
+ <ion-slides pager="true" >
+  <ion-slide>
+    <h1>Slide 1</h1>
+  </ion-slide>
+  <ion-slide>
+    <h1>Slide 2</h1>
+  </ion-slide>
+  <ion-slide>
+    <h1>Slide 3</h1>
+  </ion-slide>
+</ion-slides>
+</ion-content>  -->
