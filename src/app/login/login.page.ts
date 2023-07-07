@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
       if(res.user.uid){
         this.fireService.getDetails({uid:res.user.uid}).subscribe((res:any)=>{
           console.log(res);
-          alert("Welcome " + res['name']);
+          alert("Welcome!");
         }, (err:any)=>{
           console.log(err);
         });

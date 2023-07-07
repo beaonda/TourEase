@@ -10,35 +10,35 @@
     
   <ion-segment [(ngModel)]="loginType">
     <ion-segment-button value="user">
-      <ion-label>Login as User</ion-label>
+      <ion-label style="font-size: 10px;">Login as User</ion-label>
     </ion-segment-button>
 
     <ion-segment-button value="admin">
-      <ion-label>Login as Admin</ion-label>
+      <ion-label style="font-size: 10px;">Login as Admin</ion-label>
     </ion-segment-button>
   </ion-segment>
 
 
     <ion-list *ngIf="loginType === 'user'" class="login-form">
       <ion-item>
-  <ion-icon name="person-outline" size="large" style="margin-bottom: -5%; margin-right: 5%; color: #21757F;"></ion-icon>
+  <ion-icon name="person-outline" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
         <ion-input label="Username" labelPlacement="floating"  type="text" placeholder="Enter your username" [(ngModel)]='email'>
         </ion-input>
       </ion-item>  
 
       <ion-item>
-          <ion-icon name="lock-closed" size="large" style="margin-bottom: -5%; margin-right: 5%; color: #21757F;"></ion-icon>
+          <ion-icon name="lock-closed" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
         <ion-input label="Password" labelPlacement="floating" type="password" placeholder="Enter your password" [(ngModel)]='password'>
         </ion-input>
       </ion-item>
 
-      <ion-button (click)="login()" expand="block" shape="round" size="large" color="primary" class="login-button">Login</ion-button>
+      <ion-button (click)="login()" expand="block" shape="round" size="medium" color="primary" class="login-button">Login</ion-button>
       <div class="forgot-password">
         <a href="#">Forgot password?</a>
       </div>
 
       <div class="Register">
-        <a href="register">Register as User</a>
+        <a style="font-size: 13px;" href="register">Register as User</a>
       </div>
 
       <div class="Through-google">
@@ -47,18 +47,18 @@
     </ion-list>
     <ion-list *ngIf="loginType === 'admin'" class="login-form">
       <ion-item>
-  <ion-icon name="person-outline" size="large" style="margin-bottom: -5%; margin-right: 5%; color: #21757F;"></ion-icon>
+  <ion-icon name="person-outline" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
         <ion-input label="Username" labelPlacement="floating"  type="text" placeholder="Enter your username" >
         </ion-input>
       </ion-item>  
 
       <ion-item>
-          <ion-icon name="lock-closed" size="large" style="margin-bottom: -5%; margin-right: 5%; color: #21757F;"></ion-icon>
+          <ion-icon name="lock-closed" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
         <ion-input label="Password" labelPlacement="floating" type="password" placeholder="Enter your password">
         </ion-input>
       </ion-item>
 
-      <ion-button (click) = 'login()' expand="block" shape="round" size="large" color="primary" class="login-button">Login</ion-button>
+      <ion-button (click) = 'login()' expand="block" shape="round" size="medium" color="primary" class="login-button">Login</ion-button>
 
 
       <div class="forgot-password">
@@ -66,7 +66,7 @@
       </div>
 
       <div class="Register">
-        <a href="register-est">Register as Admin</a>
+        <a style="font-size: 13px;"href="register-est">Register as Admin</a>
       </div>
 
       <div class="Through-google">

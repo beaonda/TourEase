@@ -46,13 +46,13 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label  class="labelform">Age<span class="required">*</span></ion-label>
+          <ion-label  class="labelform" position="floating">Age<span class="required">*</span></ion-label>
           <ion-input name="age" [(ngModel)] ='age' type="number" required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform">Gender<span class="required">*</span></ion-label>
+          <ion-label class="labelform" position="floating">Gender<span class="required">*</span></ion-label>
           <ion-select name="gender" [(ngModel)] ='gender' required>
             <ion-select-option value="male">Male</ion-select-option>
             <ion-select-option value="female">Female</ion-select-option>
@@ -66,13 +66,13 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform">Contact Number<span class="required">*</span></ion-label>
+          <ion-label class="labelform" position="floating">Contact Number<span class="required">*</span></ion-label>
           <ion-input name="contact" [(ngModel)] ='contact' type="tel" pattern="^\+63\d{10}$" required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform">Email Address<span class="required">*</span></ion-label>
+          <ion-label class="labelform" position="floating">Email Address<span class="required">*</span></ion-label>
           <ion-input name="email" [(ngModel)] ='email' type="email" required></ion-input>
         </ion-item>
       </ion-col>
@@ -82,8 +82,8 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform">Exact Address<span class="required">*</span></ion-label>
-          <ion-textarea name="address" [(ngModel)] ='address' required></ion-textarea>
+          <ion-label class="labelform" position="floating">Exact Address<span class="required">*</span></ion-label>
+          <ion-input name="address" [(ngModel)] ='address' required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
