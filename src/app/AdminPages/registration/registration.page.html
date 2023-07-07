@@ -8,14 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button menu="main-menu"></ion-menu-button>
-      </ion-buttons>
-      <ion-title size="large">Registration</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
 
 
 
@@ -31,28 +24,30 @@
       <ion-item class="table-item">
         <ion-grid class="table">
           <ion-row class="table-row">
-            <ion-col class="columns">Date</ion-col>
-            <ion-col class="columns">Time</ion-col>
-            <ion-col class="columns">Name of Establishment</ion-col>
-            <ion-col class="columns">Position</ion-col>
-            <ion-col class="columns">Location</ion-col>
-            <ion-col class="columns">Business Email</ion-col>
-            <ion-col class="columns">Action</ion-col>
-            <ion-col class="columns">Selection</ion-col>
+            <ion-col class="columns" size="0.6">ID</ion-col>
+            <ion-col class="columns" size="1">Date</ion-col>
+            <ion-col class="columns"size="0.8">Time</ion-col>
+            <ion-col class="columns"size="2">Name of Establishment</ion-col>
+            <ion-col class="columns"size="1.1">Position</ion-col>
+            <ion-col class="columns"size="2.3">Location</ion-col>
+            <ion-col class="columns"size="0.9">Business Email</ion-col>
+            <ion-col class="columns"size="1.6">Action</ion-col>
+            <ion-col class="columns"size="1.7">Selection</ion-col>
           
           </ion-row>
           <ion-row class="table-row">
-            <ion-col class="col">mm/dd/yyyy</ion-col>   
-            <ion-col class="col">00:00</ion-col> 
-           <ion-col class="col">Kaila Guerrero</ion-col>   
-           <ion-col class="col">CEO</ion-col>   
-           <ion-col class="col">Earth City</ion-col>   
-           <ion-col class="col">kailaguerrero@gmail.com</ion-col>
-           <ion-col class="col"><ion-button shape="round" size="small" color="primary" class="regbutton" (click)="setOpen(true)">View Full Request</ion-button></ion-col>
-           <ion-col class="cols"><ion-select class="cols"required>
+            <ion-col class="col"size="0.6">10002</ion-col>   
+            <ion-col class="col"size="1">mm/dd/yyyy</ion-col>   
+            <ion-col class="col"size="0.8">00:00</ion-col> 
+           <ion-col class="col"size="1.9">Kaila Guerrero</ion-col>   
+           <ion-col class="col"size="1.2">CEO</ion-col>   
+           <ion-col class="col"size="2.3">Earth City</ion-col>   
+           <ion-col class="col"size="0.9">kailaguerrero@gmail.com</ion-col>
+           <ion-col class="col"size="1.6"><ion-button shape="round" size="small" color="primary" class="regbutton" (click)="setOpen(true)">View Full Request</ion-button></ion-col>
+           <ion-col class="cols"size="1.7"><ion-select class="cols"required>
             <ion-select-option value="Approve">Approve Request</ion-select-option>
             <ion-select-option value="Decline">Decline Request</ion-select-option>
-            <ion-select-option value="other">Other</ion-select-option>
+      
           </ion-select></ion-col>
       
           </ion-row>
@@ -67,18 +62,260 @@
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-title>Modal</ion-title>
+          <ion-title>All Information</ion-title>
           <ion-buttons slot="end">
             <ion-button style="color: azure;"(click)="setOpen(false)">Close</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
-          reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
-          dicta.
-        </p>
+
+
+
+       
+        
+     
+        <ion-list class="register-form">
+          <!-- First row -->
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">User Information</h1>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Last Name" value="Guerrero" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Last Name" value="Marie Kaila" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Middle Name" value="Gabayno" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+          <ion-col>
+            <ion-item>
+            <ion-input label="Contact Number" value="099929299" labelPlacement="stacked"[readonly]="true"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+            <ion-input label="Email Address" value="kailaguerrero@gmail.com" labelPlacement="stacked"[readonly]="true"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+            <ion-input label="Business Username" value="villaneyra_" labelPlacement="stacked"[readonly]="true"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+            <ion-input type="password" label="password" value="villaneyra123" labelPlacement="stacked"[disabled]="true"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+          
+
+
+
+
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Establishment Information</h1>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Name of Establishment" value="Villa Neyra" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+           <!-- Second Row -->
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Position in Establishment" value="Owner" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <!-- Third Row -->
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Location of Establishment" value="Mabini Batangas" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Operating Hours</h1>
+          <!-- Fourth Row -->
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="From" value="12:00" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+              <ion-input label="To" value="1:00" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Contact Persons</h1>
+          <!-- Fifth Row -->
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Name" value="Kaila Guerrero" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <!-- Sixth Row -->
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Position" value="Owner" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <!-- Seventh Row -->
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Contact Number" value="1234567890" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <!-- Eighth Row -->
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Address" value="Batangas City" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <!-- Ninth Row -->
+          <ion-row>
+            <ion-col>
+              <br>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="External Websites" value="VillaNeyra.com" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Business Email" value="VillaNeyra@gmail.com" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Category</h1>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Category" value="Resort" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="No. of Rooms" value="5" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+              <ion-input label="No. of Pools" value="3" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Airconditioned" value="Yes" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Other Activities" value="windsurfing, snorkeling, surfing, swimming" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Rates</h1>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="From" value="n/a" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+              <ion-input label="To" value="n/a" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <br>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-textarea rows="4" label="Description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam." labelPlacement="stacked"[readonly]="true"></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Attachments</h1>
+          <ion-row>
+            <ion-col>
+              <h1 style="font-size: 12px; color: #21757F; font-weight: bold;">Photos</h1>
+              <ion-item>
+                   <!-- DITO LALAGAY PHOTOS --> 
+                     
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <h1 style="font-size: 12px; color: #21757F; font-weight: bold;">Certificates</h1>
+              <ion-item>
+                   <!-- DITO LALAGAY PHOTOS -->   
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          
+
+
+
+
+        
+
+
+</ion-list>      
+          
+          
       </ion-content>
     </ng-template>
   </ion-modal>
