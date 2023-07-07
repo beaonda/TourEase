@@ -1,25 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-
-
-
-
-  
+<ion-content>
+  <swiper-container
+    #swiper
+    (afterinit)="swiperReady()"
+    (slidechange)="swiperSlideChanged($event)"
+    [loop]="true"
+    [pagination]="true"
+  >
+    
+    <swiper-slide>
+      <div class="slide-content">
+        <div id="info">
+          <strong class="place">NASUGBU BATANGAS</strong>
+          <p><br>Unveiling the Hidden Gems of Nasugbu! <br> Get ready to be captivated by the amazing tourist spots this charming town has to offer <br>
+            Dive into the crystal-clear waters of Calayo Beach, hike through the lush trails of Mount Batulao, and Immerse yourself in history at the century-old <br>
+            Cape Santiago Lighthouse. Indulge in delectable seafood delights at Barangay Wawa or experience the thrill of cliff diving at Layag Layag Beach. <br>
+            Nasugbu is a treasure trove of unforgettable experiences. Start your adventure today and uncover the wonders that await!</p>
+            <ion-button shape="round">Explore</ion-button>
+        </div>
+        <img class="swiper-bg" src="assets/bg-Nasugbu.png" />
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content">
+        <div id="info">
+          <strong class="place">MABINI BATANGAS</strong>
+          <p><br>Calling all adventures and beach lovers! Discover the pristine beauty of Mabini, Batangas.<br>
+          Join us as we invite explorers like you to experience the breathe taking beaches, crystal-clear waters<br>
+          and captivating coastal charm. Unwind, relax, and create unforgettable memories<br>
+          along the shores of Nasugbu. Pack your bags and let the exploration begin!</p>
+            <ion-button shape="round">Explore</ion-button>
+        </div>
+        <img class="swiper-bg" src="assets/bg-Mabini.png" />
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content"  >
+        <div id="info"> 
+          <strong class="place">TAAL BATANGAS</strong>
+          <p><br>Immerse yourself in the captivating melodies and vibrant traditions of Taal, a musical haven nestled in the Philippines. <br>
+            From the mesmerizing beats of traditional drums to the soul-stirring sounds of local instruments, Taal offers an unforgettable experience 
+            <br>for music lovers and cultural enthusiasts alike. Uncover the rich tapestry of this musical heritage, explore its historic landmarks, 
+            <br>and indulge in the warmth of Filipino hospitality. Join us on a remarkable journey to Taal, 
+            <br>where the symphony of music and culture awaits</p>
+            <ion-button shape="round">Explore</ion-button>
+        </div>
+        <img class="swiper-bg" src="assets/bg-Taal.png" />
+      </div>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>
