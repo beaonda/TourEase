@@ -69,6 +69,7 @@ export class RegisterPage {
     this.fireService.signup({email:this.email, pword:this.pword}).then(
       res=>{
         if(res.user?.uid){
+          res.user.sendEmailVerification();
           let data = {
             uname: this.uname,
             uid: res.user?.uid,

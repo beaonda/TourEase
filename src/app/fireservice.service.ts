@@ -21,9 +21,19 @@ export class FireserviceService {
   saveDetails(data:any) {
     return this.firestore.collection("users").doc(data.uId).set(data);
   }
-  getDetails(data:any) {
+  getUserDetails(data:any) {
     return this.firestore.collection("users").doc(data.uId).valueChanges();
   }
+  verified = false;
+  user = this.auth.currentUser;
+  checkVerify(data:any) {
+    this.user = this.auth.currentUser;
+    if(this.user.emailVerified){
+
+    }
+
+  }
+
 }
 
 
