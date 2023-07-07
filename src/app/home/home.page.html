@@ -1,85 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      HOME
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">HOME</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container1">
-    <strong>NASUGBU BATANGAS</strong>
-    <p><br>Unveiling the Hidden Gems of Nasugbu! <br> Get ready to be captivated by the amazing tourist spots this charming town has to offer <br>
-      Dive into the crystal-clear waters of Calayo Beach, hike through the lush trails of Mount Batulao, and Immerse yourself in history at the century-old <br>
-      Cape Santiago Lighthouse. Indulge in delectable seafood delights at Barangay Wawa or experience the thrill of cliff diving at Layag Layag Beach. <br>
-      Nasugbu is a treasure trove of unforgettable experiences. Start your adventure today and uncover the wonders that await!</p>
-      <ion-button shape="round">Explore</ion-button>
-  </div>
-
+<ion-content>
+  <swiper-container
+    #swiper
+    (afterinit)="swiperReady()"
+    (slidechange)="swiperSlideChanged($event)"
+    [loop]="true"
+    [pagination]="true"
+  >
+    
+    <swiper-slide>
+      <div class="slide-content">
+        <div id="info">
+          <strong class="place">NASUGBU BATANGAS</strong>
+          <p><br>Unveiling the Hidden Gems of Nasugbu! <br> Get ready to be captivated by the amazing tourist spots this charming town has to offer <br>
+            Dive into the crystal-clear waters of Calayo Beach, hike through the lush trails of Mount Batulao, and Immerse yourself in history at the century-old <br>
+            Cape Santiago Lighthouse. Indulge in delectable seafood delights at Barangay Wawa or experience the thrill of cliff diving at Layag Layag Beach. <br>
+            Nasugbu is a treasure trove of unforgettable experiences. Start your adventure today and uncover the wonders that await!</p>
+            <ion-button shape="round">Explore</ion-button>
+        </div>
+        <img class="swiper-bg" src="assets/bg-Nasugbu.png" />
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content">
+        <div id="info">
+          <strong class="place">MABINI BATANGAS</strong>
+          <p><br>Calling all adventures and beach lovers! Discover the pristine beauty of Mabini, Batangas.<br>
+          Join us as we invite explorers like you to experience the breathe taking beaches, crystal-clear waters<br>
+          and captivating coastal charm. Unwind, relax, and create unforgettable memories<br>
+          along the shores of Nasugbu. Pack your bags and let the exploration begin!</p>
+            <ion-button shape="round">Explore</ion-button>
+        </div>
+        <img class="swiper-bg" src="assets/bg-Mabini.png" />
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="slide-content"  >
+        <div id="info"> 
+          <strong class="place">TAAL BATANGAS</strong>
+          <p><br>Immerse yourself in the captivating melodies and vibrant traditions of Taal, a musical haven nestled in the Philippines. <br>
+            From the mesmerizing beats of traditional drums to the soul-stirring sounds of local instruments, Taal offers an unforgettable experience 
+            <br>for music lovers and cultural enthusiasts alike. Uncover the rich tapestry of this musical heritage, explore its historic landmarks, 
+            <br>and indulge in the warmth of Filipino hospitality. Join us on a remarkable journey to Taal, 
+            <br>where the symphony of music and culture awaits</p>
+            <ion-button shape="round">Explore</ion-button>
+        </div>
+        <img class="swiper-bg" src="assets/bg-Taal.png" />
+      </div>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>
-
-<!-- <ion-slides [options]="slideOptsOne" #slideWithNav  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
-  <ion-slide *ngFor="let s of sliderOne.slidesItems">
-      <img src="../../assets/background.png"/>
-   </ion-slide>
-</ion-slides>
-
-<ion-header [translucent]="true">
-  <ion-toolbar color="warning">
-    <ion-title>
-      Ion-Sliders with Custom Navigation
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" class="ion-padding">
-
-  <h5>Ionic Ion Slider with Navigation Arrows</h5>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="1">
-        <span class="slider-nav arrow-prev" (click)="slidePrev(sliderOne,slideWithNav)">
-          <div class="prev-icon-custom custon-nav" [class.disabled]="sliderOne.isBeginningSlide"></div>
-        </span>
-      </ion-col>
-      <ion-col size="10">
-
-        <ion-slides pager="false" [options]="slideOptions" #slideWithNav
-          (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
-          <ion-slide *ngFor="let s of sliderOne.slidesItems">
-            <img src="../../assets/background.png">
-          </ion-slide>
-        </ion-slides>
-
-      </ion-col>
-      <ion-col size="1">
-        <span class="slider-nav arrow-next" (click)="slideNext(sliderOne,slideWithNav)">
-          <div class="next-icon-custom custon-nav" [class.disabled]="sliderOne.isEndSlide"></div>
-        </span>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-</ion-content>
- -->
-
-<!-- <ion-content [fullscreen]="true">
- <ion-slides pager="true" >
-  <ion-slide>
-    <h1>Slide 1</h1>
-  </ion-slide>
-  <ion-slide>
-    <h1>Slide 2</h1>
-  </ion-slide>
-  <ion-slide>
-    <h1>Slide 3</h1>
-  </ion-slide>
-</ion-slides>
-</ion-content>  -->

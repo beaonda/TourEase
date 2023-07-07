@@ -11,7 +11,7 @@
     
     position:relative;
     left:-30px;
-    top:-6%;
+    top:-11%;
     margin-bottom: -50%;
     z-index: 1;
     height: 100%;
@@ -29,25 +29,27 @@
     position:relative;
     text-align: right;
     padding: 2rem;
-    margin-right: 4%;
+    margin-right: 7%;
   margin:auto;
     z-index: 2;
 
   }
   
   .register-title {
-    font-size: 5.5rem;
+    font-size: 4.5rem;
     font-weight: bolder;
     margin-bottom: -20px;
     color: #21757F;
   }
   
   .register-subtext {
-    width:50%;
-    font-size: 1.7rem;
+    width:45%;
+    font-size: 1.3rem;
     color: #032023;
-  margin-left: 50%;
+  margin-left: 55%;
   }
+
+
 
 
 
@@ -65,7 +67,7 @@ ion-col{
 }
 
 .labelform{
-    font-size: 22px;
+    font-size: 15px;
     color: #737373;
 }
 
@@ -74,11 +76,13 @@ ion-col{
     margin-left: 10px;
 }
 
+
 .register-button{
   position: relative;
-    max-width: 200px;
+    max-width: 150px;
     margin-left: 82% ;
     margin-top: 3%;
+    font-size: 16px;
     z-index: 2;
 }
 
@@ -98,6 +102,7 @@ ion-col{
 .background{
   content: url("/assets/bg-reg-p.png");
   max-width: fit-content;
+  top:-6%;
 
 
   

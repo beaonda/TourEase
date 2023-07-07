@@ -14,7 +14,7 @@
     <!-- First row -->
     <ion-row>
       <ion-col>
-        <h1 style="font-size: 20px; color: #21757F; font-weight: bold;">ESTABLISHMENT INFORMATION</h1>
+        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">ESTABLISHMENT INFORMATION</h1>
         <ion-item>
           <ion-label class="labelform" position="floating">Name of Establishment<span class="required">*</span></ion-label>
           <ion-input type="text" required></ion-input>
@@ -53,7 +53,7 @@
     <ion-row>
       
       <ion-col>
-        <h1 style="font-size: 20px; color: #21757F; font-weight: bold;">OPERATING HOURS</h1>
+        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">OPERATING HOURS</h1>
         <ion-item>
           <ion-label class="labelform" position="floating">From<span class="required">*</span></ion-label>
          
@@ -83,7 +83,7 @@
     <!-- Fifth row -->
     <ion-row class="try">
       <ion-col class ="tablecol">
-        <h1 style="font-size: 20px; color: #21757F; font-weight: bold;">CONTACT PERSON</h1>
+        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CONTACT PERSON</h1>
         <ion-item class="table-item">
           <ion-grid class="table">
             <ion-row class="table-row">
@@ -131,7 +131,7 @@
     <!-- Sixth row -->
     <ion-row>
       <ion-col>
-        <br><h1 style="font-size: 20px; color: #21757F; font-weight: bold;">CATEGORY</h1><br>
+        <br><h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CATEGORY</h1><br>
         <ion-item>
           <ion-label>Category</ion-label>
           <ion-select [(ngModel)]="selectedCategory.name" (ionChange)="onCategoryChange()">
@@ -172,5 +172,5 @@
       </ion-col>
     </ion-row>
   </ion-list>
-  <ion-button expand="block" shape="round" size="large" color="primary" class="register-button">Register</ion-button>
+  <ion-button expand="block" shape="round" size="medium" color="primary" class="register-button">Register</ion-button>
 </ion-content>
