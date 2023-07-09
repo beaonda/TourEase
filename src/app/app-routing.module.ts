@@ -46,7 +46,8 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('./AdminPages/users/users.module').then( m => m.UsersPageModule)
-  },  {
+  },
+  {
     path: 'forgotpass',
     loadChildren: () => import('./forgotpass/forgotpass.module').then( m => m.ForgotpassPageModule)
   },
