@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { FireserviceService } from '../fireservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ export class RegisterPage {
   public pword:any;
   public pword2:any;
   public bdaylbl:any;
-  constructor(private alertController: AlertController, public fireService: FireserviceService) {}
+  constructor( public router:Router, private alertController: AlertController, public fireService: FireserviceService) {}
 
   openDatePicker() {
     // Open the date picker logic here
@@ -81,11 +82,12 @@ export class RegisterPage {
             contact: this.contact,
             email: this.email,
             address: this.address,
-            pword: this.pword
           }
           this.fireService.saveDetails(data).then(
             res=>{
-              alert("Account Created");}, 
+              alert("Account Created");
+              this.router.navigate(['verify']);
+            },   
             err=>{
               console.log(err);}
           );
@@ -94,7 +96,8 @@ export class RegisterPage {
         alert(err.message);
         console.log(err);
       }
-    )
+    );
+  
   }
 
 }

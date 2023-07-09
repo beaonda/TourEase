@@ -23,16 +23,24 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+  
   }
-
+  user:any;
   login(){
     this.fireService.loginWithEmail({email:this.email, password:this.password}).then((res:any)=>{
       console.log(res);
+      this.user = this.fireService.getCurrentUser();
+      if(this.user.emailVerified){
+        this.router.navigate(['home']);
+      }else if (this.user.emailVerified == false){  
+        this.router.navigate(['verify']);
+      }else{
+        alert("User Error");
+      }
       if(res.user.uid){
-        this.fireService.getDetails({uid:res.user.uid}).subscribe((res:any)=>{
+        this.fireService.getUserDetails({uid:res.user.uid}).subscribe((res:any)=>{
           console.log(res);
-          alert("Welcome!");
-          this.router.navigate(['']);
+  
         }, (err:any)=>{
           console.log(err);
         });
