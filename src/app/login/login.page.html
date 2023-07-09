@@ -13,8 +13,8 @@
       <ion-label style="font-size: 10px;">Login as User</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button value="admin">
-      <ion-label style="font-size: 10px;">Login as Admin</ion-label>
+    <ion-segment-button value="owner">
+      <ion-label style="font-size: 10px;">Login as Owner</ion-label>
     </ion-segment-button>
   </ion-segment>
 
@@ -45,7 +45,7 @@
         <a href="#">Sign-in through google</a>
       </div>
     </ion-list>
-    <ion-list *ngIf="loginType === 'admin'" class="login-form">
+    <ion-list *ngIf="loginType === 'owner'" class="login-form">
       <ion-item>
   <ion-icon name="person-outline" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
         <ion-input label="Username" labelPlacement="floating"  type="text" placeholder="Enter your username" >
@@ -66,7 +66,7 @@
       </div>
 
       <div class="Register">
-        <a style="font-size: 13px;"href="register-est">Register as Admin</a>
+        <a style="font-size: 13px;"href="register-est">Register as Owner</a>
       </div>
 
       <div class="Through-google">
