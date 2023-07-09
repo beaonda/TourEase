@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./register-est/register-est.module').then( m => m.RegisterEstPageModule)
   },
   {
+    path: 'verify',
+    loadChildren: () => import('./verify/verify.module').then( m => m.VerifyPageModule)
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
@@ -44,9 +48,10 @@ const routes: Routes = [
     loadChildren: () => import('./AdminPages/users/users.module').then( m => m.UsersPageModule)
   },
   {
-  path: 'verify',
-    loadChildren: () => import('./verify/verify.module').then( m => m.VerifyPageModule)
+    path: 'forgotpass',
+    loadChildren: () => import('./forgotpass/forgotpass.module').then( m => m.ForgotpassPageModule)
   },
+
 
 
 
