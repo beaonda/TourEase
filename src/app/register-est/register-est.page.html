@@ -14,6 +14,67 @@
     <!-- First row -->
     <ion-row>
       <ion-col>
+        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">USER INFORMATION</h1>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+        <ion-col>
+            <ion-item>
+              <ion-label class="labelform" position="floating">Last Name<span class="required">*</span></ion-label>
+              <ion-input type="text" required></ion-input>
+            </ion-item>
+      </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label class="labelform" position="floating">First Name<span class="required">*</span></ion-label>
+              <ion-input type="text" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label class="labelform"position="floating">Middle Name</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+          <ion-item>
+            <ion-label class="labelform" position="floating">Contact Number<span class="required">*</span></ion-label>
+            <ion-input type="text" required></ion-input>
+          </ion-item>
+    </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelform" position="floating">Email Address<span class="required">*</span></ion-label>
+            <ion-input type="text" required></ion-input>
+          </ion-item>
+        </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+        <ion-item>
+          <ion-label class="labelform" position="floating">Business Username<span class="required">*</span></ion-label>
+          <ion-input type="text" required></ion-input>
+        </ion-item>
+  </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform" position="floating">Business Password<span class="required">*</span></ion-label>
+          <ion-input type="password" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label class="labelform" position="floating">Confirm Password<span class="required">*</span></ion-label>
+          <ion-input type="password" required></ion-input>
+        </ion-item>
+      </ion-col>
+</ion-row>
+
+    <ion-row>
+      <ion-col>
         <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">ESTABLISHMENT INFORMATION</h1>
         <ion-item>
           <ion-label class="labelform" position="floating">Name of Establishment<span class="required">*</span></ion-label>
@@ -22,7 +83,7 @@
       </ion-col>
     </ion-row>
 
-
+<!--  -->
     
     <ion-row>
       <ion-col>
@@ -51,9 +112,13 @@
 
     <!-- Fourth row -->
     <ion-row>
-      
       <ion-col>
         <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">OPERATING HOURS</h1>
+        </ion-col>
+        </ion-row>
+    <ion-row>
+      
+      <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">From<span class="required">*</span></ion-label>
          
@@ -130,9 +195,9 @@
       <ion-col>
         <br><h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CATEGORY</h1><br>
         <ion-item>
-          <ion-label>Category</ion-label>
-          <ion-select [(ngModel)]="selectedCategory.name" (ionChange)="onCategoryChange()">
-            <ion-select-option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</ion-select-option>
+          <ion-label style="color: #21757F; font-weight: bold; font-size: 16px;">Category</ion-label>
+          <ion-select  style="color: #21757F; font-weight: bold; font-size: 16px;" [(ngModel)]="selectedCategory.name" (ionChange)="onCategoryChange()">
+            <ion-select-option  *ngFor="let category of categories" [value]="category.name">{{ category.name }}</ion-select-option>
           </ion-select>
         </ion-item>
 
@@ -141,15 +206,110 @@
   
         <form (ngSubmit)="onSubmit()">
            <!-- Render the appropriate form fields based on the selected category -->
+
+           <ion-list class="lists">
+           <ion-row>
+              <ion-col>
+                <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+                  <!-- Render resort form fields -->
+                 <ion-label class="labelform" position="floating">Number of Rooms</ion-label>
+                 <ion-input [(ngModel)]="resortForm.rooms" name="rooms" type="text" required></ion-input>
+               </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+                  <ion-label class="labelform" position="floating">Number of Pools</ion-label>
+                  <ion-input [(ngModel)]="resortForm.pools" name="pools" type="text" required></ion-input>
+               </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+                  <ion-label class="labelform" [(ngModel)]="resortForm.ac" name="ac" position="floating">Airconditioned?</ion-label>
+                  <ion-select required>
+                    <ion-select-option value="yes">Yes</ion-select-option>
+                    <ion-select-option value="no">No</ion-select-option>
+                  </ion-select>
+               </ion-item>
+              </ion-col>
+           </ion-row>
+          
+           <ion-row>
+            <ion-col>
+              <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+                <!-- Render resort form fields -->
+               <ion-label class="labelform" position="floating">Other Activities</ion-label>
+               <ion-input [(ngModel)]="resortForm.activities" name="activities" type="text" required></ion-input>
+             </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 18px; color: #21757F; font-weight: bold;">Rates</h1>
+          <ion-row>
+          <ion-col>
+            <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+              <ion-label class="labelform" [(ngModel)]="resortForm.from" name="from" position="floating">From</ion-label>
+              <ion-select required>
+                <ion-select-option value="yes">Yes</ion-select-option>
+                <ion-select-option value="no">No</ion-select-option>
+              </ion-select>
+           </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+              <ion-label class="labelform" [(ngModel)]="resortForm.to" name="to" position="floating">To</ion-label>
+              <ion-select required>
+                <ion-select-option value="yes">Yes</ion-select-option>
+                <ion-select-option value="no">No</ion-select-option>
+              </ion-select>
+           </ion-item>
+          </ion-col>
+       </ion-row>
+
+       <ion-row>
+        <ion-col>
           <ion-item *ngIf="selectedCategory.name == 'RESORT'">
-             <!-- Render resort form fields -->
-            <ion-label position="floating">Name</ion-label>
-            <ion-input [(ngModel)]="resortForm.name" name="name" type="text" required></ion-input>
-          </ion-item>
+            <!-- Render resort form fields -->
+            <ion-label class="labelform" position="floating">Description</ion-label>
+            <ion-textarea [(ngModel)]="resortForm.description"  name="description" type="text" required rows="4" placeholder="Enter description here"></ion-textarea>
+           
+         </ion-item>
+        </ion-col>
+      </ion-row>
+      <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 18px; color: #21757F; font-weight: bold;">Attachments</h1>
+      <ion-row>
+        <ion-col>
+          <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 15px; color: #21757F; font-weight: bold;">Photos</h1>
           <ion-item *ngIf="selectedCategory.name == 'RESORT'">
-            <ion-label position="floating">Email</ion-label>
-            <ion-input [(ngModel)]="resortForm.email" name="email" type="email" required></ion-input>
-          </ion-item>
+            <!-- Render resort form fields -->
+
+            <ion-icon size="large"style="color: #21757F; margin-top: -32px; margin-right: 12px;"name="images-outline"></ion-icon>
+            <ion-input [(ngModel)]="resortForm.photos"  name="photos" type="file" accept="image/*"></ion-input>
+           
+         </ion-item>
+        </ion-col>
+
+        <ion-col>
+          
+          <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 15px; color: #21757F; font-weight: bold;">Certificates</h1>
+          <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+            <!-- Render resort form fields -->
+            <ion-icon size="large" style="color: #21757F; margin-top: -32px; margin-right: 12px;" name="document-attach-outline"></ion-icon>
+            <ion-input [(ngModel)]="resortForm.cert"  name="cert" type="file" accept="image/*"></ion-input>
+           
+         </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+
+
+    
+
+
+        </ion-list>
+
+
+
             
           <ion-item *ngIf="selectedCategory.name == 'ESTABLISHMENTS'">
            <!--  Render establishments form fields -->
@@ -160,7 +320,7 @@
           </ion-item>
       
       
-          <ion-button expand="full" type="submit">Submit</ion-button>
+          <!-- <ion-button expand="full" type="submit">Submit</ion-button> -->
         </form>
 
 

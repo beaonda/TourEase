@@ -54,8 +54,16 @@ public newCat =
   
   resortForm = {  
 
-    name: '',
-    email: '',
+    pools: '',
+    rooms: '',
+    ac: '',
+    activities: '',
+    from: '',
+    to: '',
+    description: '',
+    photos: '',
+    cert: '',
+
     // Define fields for resort form
     // Example: name: string, email: string, etc.
   };

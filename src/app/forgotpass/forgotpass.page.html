@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="container">
+    <div class="ver-background-container">
+      <img class="ver-background" src="assets/bg-ver.png" alt="Background Image">
+      <img class="transLogo-image" src="assets/icon/transLogo.png" alt="TransLogo Image">
+    </div>
+    <div class="card-container">
+      <ion-card class="custom-card">
+        <ion-card-content>
+          <div class="verify-header">
+        
+            <img class="mail-image" src="assets/mail.png" alt="Mail Image">
+            <br><br>
+            <div class="verify-title-container">
+            
+              <h1 class="verify-title">Retrieved your Account</h1>
+
+        
+
+            </div>
+            
+            <ion-item class="emails">
+              <ion-label class="labelform" position="floating">Email Address  <span class="required">*</span></ion-label>
+              <ion-input   Placeholder="example@gmail.com" required></ion-input>
+
+    
+              
+           
+            </ion-item>
+            <ion-button class="buttonlink" (click)="setOpen(true)">Send Link</ion-button>
+            <p class="verify-subtext1" style="text-align: center;">
+              We've sent an email to <span class="email">example@gmail.com</span> with instructions to reset your password. <br> Please check your inbox and follow the steps provided in the email. The link in the email will expire in <strong class="hours">24 hours.</strong>
+            </p>
+            <p class="verify-subtext2" style="text-align: center;"><strong class="click">Click here</strong> if you did not receive an email.</p>
+          
+         
+          
+           
+
+
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+
+
+
+
