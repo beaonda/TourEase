@@ -1,6 +1,6 @@
 
- <ion-header>
-  <ion-toolbar>
+ <ion-header class="nav">
+  <ion-toolbar class="nav">
     <ion-buttons slot="end">
       <ion-button (click)="openMenu()" ion-menu-toggle>
         <ion-icon name="menu"></ion-icon>
@@ -15,7 +15,7 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
+  <ion-content >
     <ion-list>
       <ion-item (click)="navigateTo('profile')">
         <ion-label>Profile</ion-label>
@@ -39,7 +39,7 @@
   </ion-content>
 </ion-menu>
 
-<ion-content id="main-content" main scroll-y="true">
+<ion-content id="main-content" fullscreen main scroll-y="true">
   <swiper-container #swiper (ionSlideDidChange)="swiperSlideChanged()" [loop]="true" [pagination]="true">
     <swiper-slide>
       <div class="slide-content">
@@ -83,8 +83,8 @@
     </swiper-slide>
   </swiper-container>
 
-  <div>
-    <ion-segment [(ngModel)]="loginType">
+  <div id="segment">
+    <ion-segment [(ngModel)]="loginType" id="sticky-segment">
       <ion-segment-button value="default">
         <ion-label>Home</ion-label>
       </ion-segment-button>
@@ -95,8 +95,10 @@
         <ion-label>Filter</ion-label>
       </ion-segment-button>
     </ion-segment>
-  
   </div>
+
+  
+
 
   <div *ngIf="loginType === 'default'" class="login-form">
     <ion-card class="estab-info">
@@ -182,6 +184,7 @@
     </div>  
   </ion-card>
   </div>
-
 </ion-content>
+
+
 

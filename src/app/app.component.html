@@ -32,3 +32,40 @@
 </ion-menu>
   <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>
+
+
+<ion-app>
+  <ion-menu menuId ="owner" content-id ="main1">
+  <ion-header> 
+  <ion-toolbar>
+  <ion-title class="menuowner">Menu</ion-title>
+  
+  </ion-toolbar>
+  
+  </ion-header>
+  <ion-content class="ownercontent">
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item routerLink ="tab1">
+          <ion-icon name="analytics-outline" slot="start"></ion-icon>
+          <ion-label>Dashboard</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item routerLink ="tab2">
+          <ion-icon name="documents-outline" slot="start"></ion-icon>
+          <ion-label>Manage</ion-label>
+       </ion-item>
+      </ion-menu-toggle>
+     <ion-menu-toggle>
+      <ion-item routerLink ="tab3">
+        <ion-icon name="people-outline" slot="start"></ion-icon>
+        <ion-label>Notifications</ion-label>
+     </ion-item>
+     </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+  </ion-menu>
+    <ion-router-outlet id="main1"></ion-router-outlet>
+  </ion-app>
+  

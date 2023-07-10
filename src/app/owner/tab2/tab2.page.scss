@@ -1,0 +1,32 @@
+ion-header {
+    --ion-background-color: #1C3057;
+   
+  }
+  ion-title{
+    color: azure;
+  }
+  ion-menu-button{
+    color:azure
+  }
+
+  .owner-screen {
+    --background: url('/assets/own-bgs.svg') no-repeat center center;
+    --background-size: cover;
+
+ 
+  }
+
+
+  .note{
+    
+    width: 70%;
+    height: 50%;
+    margin-left: 15%;
+    margin-top: 5%;
+
+  }
+
+  p{
+    margin-left: 39%;
+    padding-top: 15%;
+  }
