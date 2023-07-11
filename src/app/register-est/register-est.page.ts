@@ -7,6 +7,15 @@ import { Component} from '@angular/core';
 
 
 export class RegisterEstPage{
+  showDays: boolean = false; // Initialize showDays property to false
+  ContactForm:any;
+  locAd1:any;
+  locAd2:any;
+  locSuburb:any;
+  locCity:any;
+  locPosCode:any;
+  locProvince:any;
+  
 
 public selectedCategory = {
     name: 'RESORT',
@@ -57,6 +66,11 @@ public newCat =
       name:this.selectedCategory.name ,
       form:this.selectedCategory.form
     } */ 
+  }
+
+  showContact = false;
+  addContact(){
+    this.showContact = !(this.showContact);
   }
 
   onSubmit() {

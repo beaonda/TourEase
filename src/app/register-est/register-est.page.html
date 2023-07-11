@@ -100,12 +100,81 @@
     <!-- Second row -->
     <ion-row>
       <ion-col>
+        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">LOCATION</h1>
         <ion-item>
-          <ion-label class="labelform" position="floating">Enter the Establishment Location<span class="required">*</span></ion-label>
-          <ion-input type="text" required></ion-input>
+          <ion-label class="labelform" position="floating">House No./Lot No./Street<span class="required">*</span></ion-label>
+          <ion-input [(ngModel)]="locAd1" type="text" required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
+
+    <div *ngIf="locAd1">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelform" position="floating">Subdivision<span class="required">*</span></ion-label>
+            <ion-input [(ngModel)]="locAd2" type="text" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div *ngIf="locAd2">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelform" position="floating">Barangay<span class="required">*</span></ion-label>
+            <ion-select required  [(ngModel)]="locSuburb">
+              <ion-select-option value="Owner">Owner</ion-select-option>
+              <ion-select-option value="Representatives">Representatives</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div *ngIf="locSuburb">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelform" position="floating">City<span class="required">*</span></ion-label>
+            <ion-select required  [(ngModel)]="locCity">
+              <ion-select-option value="Owner">Owner</ion-select-option>
+              <ion-select-option value="Representatives">Representatives</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div *ngIf="locCity">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelform" position="floating">Postal Code<span class="required">*</span></ion-label>
+            <ion-input [(ngModel)]="locPosCode" type="text" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    
+    <div *ngIf="locPosCode">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelform" position="floating">Province<span class="required">*</span></ion-label>
+            <ion-input [(ngModel)]="locProvince"type="text" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    
+
+
 
     <!-- Third row -->
    
@@ -113,7 +182,7 @@
     <!-- Fourth row -->
     <ion-row>
       <ion-col>
-        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">OPERATING HOURS</h1>
+        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">OPERATING HOURS & DAYS</h1>
         </ion-col>
         </ion-row>
     <ion-row>
@@ -143,6 +212,52 @@
         </ion-item>
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item class="labelform">
+          <ion-label>Days Open</ion-label>
+          <ion-checkbox [(ngModel)]="showDays"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="showDays" class="days">
+      <ion-item class="labelform">
+        <ion-label>Monday</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    
+      <ion-item class="labelform">
+        <ion-label>Tuesday</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    
+      <ion-item class="labelform">
+        <ion-label>Wednesday</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    
+      <ion-item class="labelform">
+        <ion-label>Thursday</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    
+      <ion-item class="labelform">
+        <ion-label>Friday</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    
+      <ion-item class="labelform">
+        <ion-label>Saturday</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    
+      <ion-item class="labelform">
+        <ion-label>Sunday</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    </div>
   
 
     <!-- Fifth row -->
@@ -172,7 +287,58 @@
       </ion-col>
     </ion-row>
     <br><br>
-    <ion-button expand="block" shape="round" size="medium" color="primary" class="regbutton">Add Contact Person</ion-button>
+    <ion-button expand="block" shape="round" size="medium" color="primary" class="regbutton" (click) = "addContact()">Add Contact Person</ion-button>
+
+    <div *ngIf="showContact == true">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+           
+            <ion-label class="labelform" position="floating">Name<span class="required">*</span></ion-label>
+            <ion-input type="text" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="margin-top: 19px;">
+          <ion-item>
+            <ion-label class="labelform" position="floating">Position<span class="required">*</span></ion-label>
+            <ion-select required>
+              <ion-select-option value="Owner">Owner</ion-select-option>
+              <ion-select-option value="Representatives">Representatives</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+          
+            <ion-label class="labelform" position="floating">Contact Number<span class="required">*</span></ion-label>
+            <ion-input type="text" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+          
+            <ion-label class="labelform" position="floating">Address<span class="required">*</span></ion-label>
+            <ion-input type="text" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
 
     <ion-row>
       <ion-col>
