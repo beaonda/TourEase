@@ -33,7 +33,7 @@
     "ionicons": "^7.0.0",
     "ngx-swiper-wrapper": "^10.0.0",
     "rxjs": "~7.8.0",
-    "swiper": "^10.0.3",
+    "swiper": "^10.0.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

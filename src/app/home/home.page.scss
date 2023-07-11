@@ -1,31 +1,3 @@
-swiper-container {
-  width: 100%;
-  height: 100%;
-
-  --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
-  --swiper-pagination-color: var(--ion-color-primary, #6ac5f6);
-}
-  
-swiper-slide {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-swiper-bg {
-  
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  max-width: auto;
-  object-fit: cover;
-
-}
-
-.swiper-slide {
-  position: relative;
-}
 
 .slide-content {
   position: absolute;
@@ -40,14 +12,14 @@ swiper-bg {
   padding: 20px;
   color: white;
   text-align: center;
-  background-color: rgba(0, 0, 0, 5); 
+  background-color: rgba(0, 0, 0, 5);
 }
 
 .place {
   font-size: 5rem;
   font-weight: bolder;
   margin-bottom: -10px;
-  color: #21757F;
+  color: #21757f;
   text-shadow: 2px 2px 15px #000000;
 }
 
@@ -65,4 +37,64 @@ swiper-bg {
 #info {
   position: relative;
   z-index: 2;
+}
+
+.estab-info {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.explore-button {
+  width:100px;
+}
+
+.home-estab {
+  width: 750px;
+  height: 400px;
+}
+.estab-name {
+  font-size: 2rem;
+  font-weight: bolder;
+  margin-bottom: -10px;
+  color: #21757f;
+}
+
+.municipality {
+  font-size: 1rem;
+  margin-bottom: -10px;
+  color: #F6C826;
+}
+
+.estab-cont {
+  text-align: justify;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:#000000;
+}
+
+ion-content {
+  --ion-background-color: transparent;
+}
+
+swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+swiper-container ion-pagination-bullet {
+  --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
+  --swiper-pagination-color: var(--ion-color-primary, #6ac5f6);
+}
+
+swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
