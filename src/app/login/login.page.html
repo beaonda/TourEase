@@ -10,7 +10,7 @@
     
   <ion-segment [(ngModel)]="loginType">
     <ion-segment-button value="user">
-      <ion-label style="font-size: 10px;">Login as User</ion-label>
+      <ion-label style="font-size: 10px;">Login as Tourist</ion-label>
     </ion-segment-button>
 
     <ion-segment-button value="owner">
@@ -22,7 +22,7 @@
     <ion-list *ngIf="loginType === 'user'" class="login-form">
       <ion-item>
   <ion-icon name="person-outline" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
-        <ion-input label="Username" labelPlacement="floating"  type="text" placeholder="Enter your username" [(ngModel)]='email'>
+        <ion-input label="Email" labelPlacement="floating"  type="text" placeholder="Enter your email" [(ngModel)]='email'>
         </ion-input>
       </ion-item>  
 
@@ -34,11 +34,11 @@
 
       <ion-button (click)="login()" expand="block" shape="round" size="medium" color="primary" class="login-button">Login</ion-button>
       <div class="forgot-password">
-        <a href="#">Forgot password?</a>
+        <a routerLink = "/forgotpass">Forgot password?</a>
       </div>
 
       <div class="Register">
-        <a style="font-size: 13px;" href="register">Register as User</a>
+        <a style="font-size: 13px;" routerLink ="/register">Register as Tourist</a>
       </div>
 
       <div class="Through-google">
@@ -48,7 +48,7 @@
     <ion-list *ngIf="loginType === 'owner'" class="login-form">
       <ion-item>
   <ion-icon name="person-outline" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
-        <ion-input label="Username" labelPlacement="floating"  type="text" placeholder="Enter your username" >
+        <ion-input label="Email" labelPlacement="floating"  type="text" placeholder="Enter your email" >
         </ion-input>
       </ion-item>  
 

@@ -8,6 +8,21 @@ import { Component} from '@angular/core';
 
 export class RegisterEstPage{
 
+public lname:any;
+public fname:any;
+public mname:any;
+public contact:any;
+public email:any;
+public buname:any;
+public bpword:any;
+public bpword2:any;
+public est_name:any;
+public pos:any;
+public est_loc:any;
+public oh_from:any;
+public oh_to:any;
+public ex_link:any;
+public b_email:any;
 public selectedCategory = {
     name: 'RESORT',
     form: 'resortForm'
@@ -49,7 +64,18 @@ public newCat =
     {value: '22:00'},
     {value: '23:00'},
     {value: '24:00'}
-    
+  ]
+
+  rates = [
+    {value: '>500'},
+    {value: '500 - 1,000'},
+    {value: '1,000 - 2,000'},
+    {value: '2,000 - 3,500'},
+    {value: '3,500 - 5,000'},
+    {value: '5,000 - 7,000'},
+    {value: '7,000 - 10,000'},
+    {value: '10,000 - 12,000'},
+    {value: '12,000 - 15,000'},
   ]
   
   resortForm = {  

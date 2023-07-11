@@ -1,6 +1,6 @@
 
 
-<ion-content class="ion-padding login-page">
+<ion-content  [fullscreen]="true" class="ion-padding login-page">
 
   <img class="background" src="assets/bp-reg-est.png"/>
   <div class="register-header">
@@ -20,20 +20,20 @@
         <ion-row>
         <ion-col>
             <ion-item>
-              <ion-label class="labelform" position="floating">Last Name<span class="required">*</span></ion-label>
-              <ion-input type="text" required></ion-input>
+              <ion-label class="labelform" position="floating" >Last Name<span class="required">*</span></ion-label>
+              <ion-input type="text" [(ngModel)] ='lname' name="lname" required></ion-input>
             </ion-item>
       </ion-col>
           <ion-col>
             <ion-item>
               <ion-label class="labelform" position="floating">First Name<span class="required">*</span></ion-label>
-              <ion-input type="text" required></ion-input>
+              <ion-input type="text" [(ngModel)] ='fname' name="fname" required></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-label class="labelform"position="floating">Middle Name</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-label class="labelform"position="floating" >Middle Name</ion-label>
+              <ion-input type="text" [(ngModel)] ='mname' name="mname"></ion-input>
             </ion-item>
             </ion-col>
     </ion-row>
@@ -42,33 +42,33 @@
       <ion-col>
           <ion-item>
             <ion-label class="labelform" position="floating">Contact Number<span class="required">*</span></ion-label>
-            <ion-input type="text" required></ion-input>
+            <ion-input type="text" [(ngModel)] ='contact' name="contact"required></ion-input>
           </ion-item>
     </ion-col>
         <ion-col>
           <ion-item>
-            <ion-label class="labelform" position="floating">Email Address<span class="required">*</span></ion-label>
-            <ion-input type="text" required></ion-input>
+            <ion-label class="labelform" position="floating" >Email Address<span class="required">*</span></ion-label>
+            <ion-input type="text" [(ngModel)] ='email' name="email"required></ion-input>
           </ion-item>
         </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
         <ion-item>
-          <ion-label class="labelform" position="floating">Business Username<span class="required">*</span></ion-label>
-          <ion-input type="text" required></ion-input>
+          <ion-label class="labelform" position="floating" >Business Username<span class="required">*</span></ion-label>
+          <ion-input type="text" [(ngModel)] ='buname' name="buname" required></ion-input>
         </ion-item>
   </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform" position="floating">Business Password<span class="required">*</span></ion-label>
-          <ion-input type="password" required></ion-input>
+          <ion-label class="labelform" position="floating" >Business Password<span class="required">*</span></ion-label>
+          <ion-input type="password" [(ngModel)] ='bpword' name="bpword" required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label class="labelform" position="floating">Confirm Password<span class="required">*</span></ion-label>
-          <ion-input type="password" required></ion-input>
+          <ion-label class="labelform" position="floating" >Confirm Password<span class="required">*</span></ion-label>
+          <ion-input type="password" [(ngModel)] ='bpword2' name="bpword2" required></ion-input>
         </ion-item>
       </ion-col>
 </ion-row>
@@ -78,7 +78,7 @@
         <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">ESTABLISHMENT INFORMATION</h1>
         <ion-item>
           <ion-label class="labelform" position="floating">Name of Establishment<span class="required">*</span></ion-label>
-          <ion-input type="text" required></ion-input>
+          <ion-input type="text" [(ngModel)] ='est_name' name="est_name" required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -89,9 +89,10 @@
       <ion-col>
         <ion-item>
           <ion-label class="labelform">Your position in this establishment<span class="required">*</span></ion-label>
-          <ion-select required>
+          <ion-select name="pos" [(ngModel)] ='pos' required>
             <ion-select-option value="Owner">Owner</ion-select-option>
-            <ion-select-option value="Representatives">Representatives</ion-select-option>
+            <ion-select-option value="Representative">Representative</ion-select-option>
+            <ion-select-option value="Employee">Employee</ion-select-option>
             <ion-select-option value="other">Other</ion-select-option>
           </ion-select>
         </ion-item>
@@ -102,7 +103,7 @@
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">Enter the Establishment Location<span class="required">*</span></ion-label>
-          <ion-input type="text" required></ion-input>
+          <ion-input name="est_loc" type="text" [(ngModel)] ='est_loc' required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -122,7 +123,7 @@
         <ion-item>
           <ion-label class="labelform" position="floating">From<span class="required">*</span></ion-label>
          
-          <ion-select required>
+          <ion-select name="oh-from" [(ngModel)] ='oh_from' required>
             <ion-select-option *ngFor="let times of times" [value]="times.value">{{ times.value }}</ion-select-option>
           </ion-select>
         </ion-item>
@@ -133,9 +134,8 @@
         <ion-item class="to">
           <ion-label class="labelform" position="floating">To<span class="required">*</span></ion-label>
     
-          <ion-select required>
+          <ion-select name="oh_to" [(ngModel)] ='oh_to' required>
             <ion-select-option *ngFor="let times of times" [value]="times.value">{{ times.value }}</ion-select-option>
-            
           </ion-select>
         </ion-item>
       </ion-col>
@@ -145,7 +145,7 @@
     <!-- Fifth row -->
     <ion-row class="try">
       <ion-col class ="tablecol">
-        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CONTACT PERSON</h1>
+        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CONTACT PERSON/s</h1>
         <ion-item class="table-item">
           <ion-grid class="table">
             <ion-row class="table-row">
@@ -159,9 +159,6 @@
              <ion-col class="columns"style="text-align: center;">CEO</ion-col>   
              <ion-col class="columns"style="text-align: center;">123456789</ion-col>   
              <ion-col class="columns"style="text-align: center;">Earth City</ion-col>   
-
-
-
             </ion-row>
 
           </ion-grid>
@@ -175,15 +172,15 @@
       <ion-col>
         <ion-item>
           <br><br><br>
-          <ion-label class="labelform" position="floating">External Website/Links<span class="required">*</span></ion-label>
-          <ion-input type="text" required></ion-input>
+          <ion-label class="labelform" position="floating">External Website/Link<span class="required">*</span></ion-label>
+          <ion-input name="ex_link" type="text" [(ngModel)] ='ex_link' required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <br><br><br>
         <ion-item class="business">
           <ion-label class="labelform" position="floating">Business Email<span class="required">*</span></ion-label>
-          <ion-input type="text" required></ion-input>
+          <ion-input name="b_email" type="text" [(ngModel)] ='b_email' required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -196,7 +193,7 @@
         <br><h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CATEGORY</h1><br>
         <ion-item>
           <ion-label style="color: #21757F; font-weight: bold; font-size: 16px;">Category</ion-label>
-          <ion-select  style="color: #21757F; font-weight: bold; font-size: 16px;" [(ngModel)]="selectedCategory.name" (ionChange)="onCategoryChange()">
+          <ion-select name="selectedCategory.name"  style="color: #21757F; font-weight: bold; font-size: 16px;" [(ngModel)]="selectedCategory.name" (ionChange)="onCategoryChange()">
             <ion-select-option  *ngFor="let category of categories" [value]="category.name">{{ category.name }}</ion-select-option>
           </ion-select>
         </ion-item>
@@ -213,19 +210,19 @@
                 <ion-item *ngIf="selectedCategory.name == 'RESORT'">
                   <!-- Render resort form fields -->
                  <ion-label class="labelform" position="floating">Number of Rooms</ion-label>
-                 <ion-input [(ngModel)]="resortForm.rooms" name="rooms" type="text" required></ion-input>
+                 <ion-input [(ngModel)]="resortForm.rooms" name="rooms" type="number" required></ion-input>
                </ion-item>
               </ion-col>
               <ion-col>
                 <ion-item *ngIf="selectedCategory.name == 'RESORT'">
                   <ion-label class="labelform" position="floating">Number of Pools</ion-label>
-                  <ion-input [(ngModel)]="resortForm.pools" name="pools" type="text" required></ion-input>
+                  <ion-input [(ngModel)]="resortForm.pools" name="pools" type="number" required></ion-input>
                </ion-item>
               </ion-col>
               <ion-col>
                 <ion-item *ngIf="selectedCategory.name == 'RESORT'">
-                  <ion-label class="labelform" [(ngModel)]="resortForm.ac" name="ac" position="floating">Airconditioned?</ion-label>
-                  <ion-select required>
+                  <ion-label class="labelform"  position="floating">Airconditioned?</ion-label>
+                  <ion-select name="ac" [(ngModel)] ='resortForm.ac' required>
                     <ion-select-option value="yes">Yes</ion-select-option>
                     <ion-select-option value="no">No</ion-select-option>
                   </ion-select>
@@ -247,25 +244,17 @@
           <ion-row>
           <ion-col>
             <ion-item *ngIf="selectedCategory.name == 'RESORT'">
-              <ion-label class="labelform" [(ngModel)]="resortForm.from" name="from" position="floating">From</ion-label>
-              <ion-select required>
-                <ion-select-option value="yes">Yes</ion-select-option>
-                <ion-select-option value="no">No</ion-select-option>
+              <ion-label class="labelform"  name="from" position="floating">Price Range</ion-label>
+              <ion-select [(ngModel)]="resortForm.from" required>
+                <ion-select-option *ngFor="let rate of rates" [value]="rate.value">{{ rate.value }}</ion-select-option>
               </ion-select>
            </ion-item>
           </ion-col>
-          <ion-col>
-            <ion-item *ngIf="selectedCategory.name == 'RESORT'">
-              <ion-label class="labelform" [(ngModel)]="resortForm.to" name="to" position="floating">To</ion-label>
-              <ion-select required>
-                <ion-select-option value="yes">Yes</ion-select-option>
-                <ion-select-option value="no">No</ion-select-option>
-              </ion-select>
-           </ion-item>
-          </ion-col>
+        
        </ion-row>
 
-       <ion-row>
+      <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 18px; color: #21757F; font-weight: bold;">Additional Information</h1>
+      <ion-row>
         <ion-col>
           <ion-item *ngIf="selectedCategory.name == 'RESORT'">
             <!-- Render resort form fields -->
@@ -275,7 +264,6 @@
          </ion-item>
         </ion-col>
       </ion-row>
-      <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 18px; color: #21757F; font-weight: bold;">Attachments</h1>
       <ion-row>
         <ion-col>
           <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 15px; color: #21757F; font-weight: bold;">Photos</h1>

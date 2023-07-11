@@ -1,3 +1,9 @@
+ion-content {
+  --background: url("/assets/WELCOME.png") no-repeat;
+  --background-size:auto;
+  --max-width: fit-content;
+}
+
 
 .slide-content {
   position: absolute;
@@ -34,15 +40,25 @@
   opacity: 0.5;
 }
 
+.nav{
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
 #info {
   position: relative;
   z-index: 2;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .estab-info {
   width: 750px;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
 }
 
 .explore-container {
@@ -53,17 +69,19 @@
 
 .explore-button {
   width:100px;
+  margin-bottom:20px; 
 }
 
 .home-estab {
   width: 750px;
   height: 400px;
+ 
 }
 .estab-name {
   font-size: 2rem;
   font-weight: bolder;
   margin-bottom: -10px;
-  color: #21757f;
+  color: #446d72;
 }
 
 .municipality {
@@ -76,11 +94,10 @@
   text-align: justify;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color:#000000;
+  padding-left:3%;
+  padding-right:3%;
 }
 
-ion-content {
-  --ion-background-color: transparent;
-}
 
 swiper-container {
   width: 100%;
@@ -97,4 +114,30 @@ swiper-slide {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#bottomtabs{
+  height: 50px;
+}
+
+.login-form{
+  padding-top: 5vh;
+}
+
+//Phone responsive
+
+@media (max-width: 767px) {
+  #info{
+    font-size:10px;
+  }
+
+  .place{
+    font-size:50px;
+  }
+
+  .estab-info {
+    width: 375px;
+    display:flex;
+    flex-direction: column;
+  }
 }

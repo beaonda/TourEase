@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FireserviceService } from '../../fireservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminlogin',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminloginPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router:Router, 
+  ) { }
 
   ngOnInit() {
+  }
+
+  adLog(){
+    this.router.navigate(['dashboard']);
   }
 
 }

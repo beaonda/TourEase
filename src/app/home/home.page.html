@@ -1,53 +1,17 @@
+<ion-menu-buttons>
+  <ion-menu-button color = "dark" menu="home-menu" style = "position:fixed; z-index:100;right:0;"></ion-menu-button>
+</ion-menu-buttons>
 
- <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button (click)="openMenu()" ion-menu-toggle>
-        <ion-icon name="menu"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
 
-<ion-menu side="end" contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item (click)="navigateTo('profile')">
-        <ion-label>Profile</ion-label>
-      </ion-item>
-      <ion-item (click)="navigateTo('account')">
-        <ion-label>Account</ion-label>
-      </ion-item>
-      <ion-item (click)="navigateTo('help-support')">
-        <ion-label>Help & Support</ion-label>
-      </ion-item>
-      <ion-item (click)="navigateTo('settings-privacy')">
-        <ion-label>Settings & Privacy</ion-label>
-      </ion-item>
-      <ion-item (click)="navigateTo('logout')">
-        <ion-label>Log Out</ion-label>
-      </ion-item>
-      <ion-item (click)="navigateTo('register-establishment')">
-        <ion-label>Register Establishment</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
-<ion-content id="main-content" main scroll-y="true">
-  <swiper-container #swiper (ionSlideDidChange)="swiperSlideChanged()" [loop]="true" [pagination]="true">
+<ion-content [fullscreen]="true" id="main-content" main scroll-y="true">
+  <swiper-container #swiper (ionSlideDidChange)="swiperSlideChanged($event)" [loop]="true" [pagination]="true" *ngIf="loginType === 'trending'">
     <swiper-slide>
       <div class="slide-content">
         <div id="info">
           <strong class="place">NASUGBU BATANGAS</strong>
-          <p><br>Unveiling the Hidden Gems of Nasugbu! <br> Get ready to be captivated by the amazing tourist spots this charming town has to offer <br>
-            Dive into the crystal-clear waters of Calayo Beach, hike through the lush trails of Mount Batulao, and Immerse yourself in history at the century-old <br>
-            Cape Santiago Lighthouse. Indulge in delectable seafood delights at Barangay Wawa or experience the thrill of cliff diving at Layag Layag Beach. <br>
+          <p><br>Unveiling the Hidden Gems of Nasugbu! Get ready to be captivated by the amazing tourist spots this charming town has to offer
+            Dive into the crystal-clear waters of Calayo Beach, hike through the lush trails of Mount Batulao, and Immerse yourself in history at the century-old 
+            Cape Santiago Lighthouse. Indulge in delectable seafood delights at Barangay Wawa or experience the thrill of cliff diving at Layag Layag Beach. 
             Nasugbu is a treasure trove of unforgettable experiences. Start your adventure today and uncover the wonders that await!</p>
           <ion-button shape="round">Explore</ion-button>
         </div>
@@ -84,25 +48,15 @@
   </swiper-container>
 
   <div>
-    <ion-segment [(ngModel)]="loginType">
-      <ion-segment-button value="default">
-        <ion-label>Home</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="trending">
-        <ion-label>Trending</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="filter">
-        <ion-label>Filter</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  
+   
   </div>
 
   <div *ngIf="loginType === 'default'" class="login-form">
+    
     <ion-card class="estab-info">
       <img class="home-estab" src="assets/home/Nasugbu-Pico.jpg" />
       <ion-card-header>
-        <ion-card-title class="estab-name">PICO DE LORO </ion-card-title>
+        <ion-card-title class="estab-name"> PICO DE LORO </ion-card-title>
         <ion-card-subtitle class="municipality">Nasugbu Batangas <br></ion-card-subtitle>
       </ion-card-header>
       <ion-card-content class="estab-cont">
@@ -184,4 +138,24 @@
   </div>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar id = "bottom-tabs">
+    <ion-segment [(ngModel)]="loginType">
+      <ion-segment-button value="trending" size = "medium">
+        <ion-icon name="trending-up-outline"></ion-icon>
+        <ion-label>Trends</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="default">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-segment-button>
+      
+      <ion-segment-button value="filter" size = "medium">
+        <ion-icon name="filter-outline"></ion-icon>
+        <ion-label>Filter</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>
 
