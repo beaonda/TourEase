@@ -58,7 +58,11 @@ const routes: Routes = [
   {
     path: 'tab3',
     loadChildren: () => import('./owner/tab3/tab3.module').then( m => m.Tab3PageModule)
+  },  {
+    path: 'owner-login',
+    loadChildren: () => import('./owner-login/owner-login.module').then( m => m.OwnerLoginPageModule)
   },
+
 
  
 
