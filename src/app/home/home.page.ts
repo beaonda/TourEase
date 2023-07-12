@@ -5,6 +5,8 @@ import Swiper from 'swiper';
 import { IonMenu } from '@ionic/angular';
 
 
+import { FireserviceService } from '../fireservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +18,7 @@ export class HomePage implements OnInit {
   swiper?: Swiper;
 
   loginType: string ='default';
+  e:any;
 
   constructor(private menuController: MenuController) {}
 
@@ -28,21 +31,25 @@ export class HomePage implements OnInit {
       this.swiper = new Swiper(this.swiperRef.nativeElement, {
         loop: true,
         pagination: true,
+        virtualTranslate:true,
+        speed: 500,
+        autoplay: {
+          delay: 1000,
+        },
         on: {
           init: () => {
             this.swiperReady();
           },
           slideChange: () => {
-            this.swiperSlideChanged();
+            this.swiperSlideChanged(this.e);
           },
         },
       });
     }
   }
 
-  swiperSlideChanged() {
-    const index = this.swiper?.activeIndex || 0;
-    console.log('changed', index);
+  swiperSlideChanged(e: any) {
+    console.log('changed', e);
   }
 
   swiperReady() {
@@ -57,4 +64,5 @@ export class HomePage implements OnInit {
     // Handle navigation to different pages
     console.log('Navigating to', page);
   }
+
 }

@@ -13,11 +13,14 @@
             <div class="verify-title-container">
               <h1 class="verify-title">Verify your Email</h1>
             </div>
-            <br><p class="verify-subtext1">
-              We've sent an email to <span class="email">example@gmail.com</span> to verify your email address and
+            <br>
+            <p class="verify-subtext1">
+              We've sent an email to <span [innerHTML]="email"></span> to verify your email address and
               <br />activate your account. The link in the email will expire in <strong class="hours">24 hours.</strong>
             </p>
-            <br><p class="verify-subtext2"><strong class="click">Click here</strong> if you did not receive an email.</p>
+            <br>
+            <p class="verify-subtext2"><a class="click" (click) = "clickHere()"><strong>Click here</strong></a> if you did not receive an email.
+            </p>
             <br /><br/><br/><br/><br/><br/><br>
           </div>
         </ion-card-content>

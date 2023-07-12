@@ -2,9 +2,79 @@ ion-header {
     --ion-background-color: var(--ion-color-primary);
    
   }
+
+
+  .reg-data{
+    color:black;
+    background-color: white;
+  }
+
+  .columns{
+    background-color: #21757F; color:white;font-weight: bolder;text-align: center;
+  }
+
+  .col{
+    text-align: center;
+    top: 10%;
+  }
+  .cols{
+    text-align:right;
+    left:2%;
+    bottom: 10%;
+  }
   ion-title{
     color: azure;
   }
+
   ion-menu-button{
     color:azure
+  }
+
+  .table-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .columns{
+    padding:10px;
+    flex: 1 0 10%;
+  }
+
+
+  .regbutton{
+    max-width: 150px;
+  }
+
+  .search{
+    left: 49%;
+    max-width: 50%;
+  }
+
+
+
+
+  @media (max-width: 576px), (max-width:800px) {
+  
+.table-row{
+  display: flex;
+  flex-wrap:nowrap;
+ 
+ 
+}
+
+.columns{
+  padding: 1px;
+  font-size: 9px;
+  flex: 4 0 25%;
+  margin-left: 0.5%;
+
+  
+}
+
+
+.regbutton{
+  max-width: 50px;
+  font-size: 4px;
+}
+
   }

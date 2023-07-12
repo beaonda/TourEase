@@ -3,12 +3,11 @@ import { FireserviceService } from '../fireservice.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-owner-login',
+  templateUrl: './owner-login.page.html',
+  styleUrls: ['./owner-login.page.scss'],
 })
-export class LoginPage implements OnInit {
-
+export class OwnerLoginPage implements OnInit {
   loginType: string = 'user';
   public email:any;
   public password:any;
@@ -55,5 +54,6 @@ export class LoginPage implements OnInit {
     alert("hi");
     this.router.navigate(['/forgotpass']);
   }
+
 
 }

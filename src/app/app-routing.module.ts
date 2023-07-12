@@ -32,10 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./verify/verify.module').then( m => m.VerifyPageModule)
   },
   {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
-  },
-  {
     path: 'dashboard',
     loadChildren: () => import('./AdminPages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
@@ -62,7 +58,11 @@ const routes: Routes = [
   {
     path: 'tab3',
     loadChildren: () => import('./owner/tab3/tab3.module').then( m => m.Tab3PageModule)
+  },  {
+    path: 'owner-login',
+    loadChildren: () => import('./owner-login/owner-login.module').then( m => m.OwnerLoginPageModule)
   },
+
 
  
 

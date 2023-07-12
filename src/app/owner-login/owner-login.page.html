@@ -17,34 +17,35 @@
       <ion-label style="font-size: 10px;">Login as Owner</ion-label>
     </ion-segment-button>
   </ion-segment>
-
  -->
+
     <ion-list class="login-form">
       <ion-item>
   <ion-icon name="person-outline" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
-        <ion-input label="Email" labelPlacement="floating"  type="text" placeholder="Enter your email" [(ngModel)]='email'>
+        <ion-input label="Email" labelPlacement="floating"  type="text" placeholder="Enter your email" >
         </ion-input>
       </ion-item>  
 
       <ion-item>
           <ion-icon name="lock-closed" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
-        <ion-input label="Password" labelPlacement="floating" type="password" placeholder="Enter your password" [(ngModel)]='password'>
+        <ion-input label="Password" labelPlacement="floating" type="password" placeholder="Enter your password">
         </ion-input>
       </ion-item>
 
-      <ion-button (click)="login()" expand="block" shape="round" size="medium" color="primary" class="login-button">Login</ion-button>
+      <ion-button (click) = 'login()' expand="block" shape="round" size="medium" color="primary" class="login-button">Login</ion-button>
+
+
       <div class="forgot-password">
-        <a routerLink = "/forgotpass">Forgot password?</a>
+        <a href="#">Forgot password?</a>
       </div>
 
       <div class="Register">
-        <a style="font-size: 13px;" routerLink ="/register">Register as Tourist</a>
+        <a style="font-size: 13px;"href="register-est">Register as Owner</a>
       </div>
 
       <div class="Through-google">
         <a href="#">Sign-in through google</a>
       </div>
     </ion-list>
-    
   </div>
 </ion-content>

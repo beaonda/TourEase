@@ -7,6 +7,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
 
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col class="search">
+      <ion-searchbar animated="true" placeholder="Search"></ion-searchbar>
+    </ion-col>
+
+  </ion-row>
+  <ion-row class="try">
+    <ion-col class ="tablecol">
+  <!--     <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CONTACT PERSON</h1> -->
+      <ion-item class="table-item">
+        <ion-grid class="table">
+          <ion-row class="table-row">
+            <ion-col class="columns">Username</ion-col>
+            <ion-col class="columns">Full Name</ion-col>
+            <ion-col class="columns">Email</ion-col>
+            <ion-col class="columns">Contact Number</ion-col>
+            <ion-col class="columns">Gender</ion-col>
+            <ion-col class="columns">View Profile</ion-col>
+            <ion-col class="columns">Selection</ion-col>
+          </ion-row>
+          <ion-row class="reg-data" *ngFor = "let user of usersList">
+            <ion-col class="col">{{user.uname}}</ion-col>
+            <ion-col class="col">{{user.fname + ' ' + user.mname + ' ' + user.lname}}</ion-col>
+            <ion-col class="col">{{user.email}}</ion-col>
+            <ion-col class="col">{{user.contact}}</ion-col>
+            <ion-col class="col">{{user.gender}}</ion-col>
+            <ion-col class="col"><ion-button>View</ion-button></ion-col>
+            <ion-col class="col"></ion-col>
+          </ion-row>
+          
+        </ion-grid>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 </ion-content>
