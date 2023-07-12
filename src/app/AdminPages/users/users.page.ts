@@ -30,8 +30,6 @@ export class UsersPage implements OnInit {
       } 
     });
     this.usersList$ = this.fireService.getAllUsers();*/
-    this.usersList = this.fireService.getAllUsers();
-    console.log(this.usersList);
     this.retrieveUsers();
   }
 

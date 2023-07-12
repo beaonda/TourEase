@@ -12,6 +12,9 @@ import { Observable } from 'rxjs';
 
 export class FireserviceService {
   user:any;
+  estab:any;
+  estabItem:any;
+  
   
   constructor(
     public firestore: AngularFirestore, 
@@ -22,12 +25,23 @@ export class FireserviceService {
     auth.authState.subscribe(user => {
       this.user = user;
     });
+    this.estabCollection = firestore.collection<Estab>('establishments');
+    this.estabItems = this.estabCollection.valueChanges();
+    auth.authState.subscribe(estab => {
+      this.estab = estab;
+    });
   }
 
   private usersCollection: AngularFirestoreCollection<User>;
   items: Observable<User[]>;
-  addItem(item: User) {
+  addUserItem(item: User) {
     this.usersCollection.add(item);
+  }
+
+  private estabCollection: AngularFirestoreCollection<Estab>;
+  estabItems: Observable<Estab[]>;
+  addEstabItem(estabItem: Estab) {
+    this.estabCollection.add(estabItem);
   }
   getAuth(){
     return this.auth;
@@ -47,6 +61,15 @@ export class FireserviceService {
   getAllUsername(){
     return this.firestore.collection("users").doc().valueChanges();
   }
+  saveEstDetails(data:any){
+    return this.firestore.collection("establishments").doc(data.uId).set(data);
+  }
+  saveOperations(data:any){
+    return this.firestore.collection("operations").doc(data.uId).set(data);
+  }
+  
+
+  
 
   
   
@@ -57,8 +80,10 @@ export class FireserviceService {
     });
   } */
   getAllUsers(){
-    
        return this.usersCollection;
+  }
+  getAllEstabs(){
+    return this.estabCollection;
   }
   getCurrentUser(){
     return this.user;
@@ -73,6 +98,10 @@ export class FireserviceService {
 
   } */
 
+
+}
+
+export interface Estab {
 
 }
 

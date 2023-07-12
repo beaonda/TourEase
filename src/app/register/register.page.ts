@@ -23,7 +23,14 @@ export class RegisterPage {
   public pword:any;
   public pword2:any;
   public bdaylbl:any;
-  constructor( public router:Router, private alertController: AlertController, public fireService: FireserviceService) {}
+
+  constructor( 
+    public router:Router, 
+    private alertController: AlertController, 
+    public fireService: FireserviceService) 
+    {
+      
+    }
 
   openDatePicker() {
     // Open the date picker logic here

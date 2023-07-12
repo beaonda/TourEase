@@ -20,27 +20,23 @@
       <ion-item class="table-item">
         <ion-grid class="table">
           <ion-row class="table-row">
-            <ion-col class="columns" size="0.6">ID</ion-col>
             <ion-col class="columns" size="1">Date</ion-col>
             <ion-col class="columns"size="0.8">Time</ion-col>
             <ion-col class="columns"size="2">Name of Establishment</ion-col>
-            <ion-col class="columns"size="1.1">Position</ion-col>
             <ion-col class="columns"size="2.3">Location</ion-col>
             <ion-col class="columns"size="0.9">Business Email</ion-col>
             <ion-col class="columns"size="1.6">Action</ion-col>
             <ion-col class="columns"size="1.7">Selection</ion-col>
           
           </ion-row>
-          <ion-row class="table-row">
-            <ion-col class="col"size="0.6">10002</ion-col>   
-            <ion-col class="col"size="1">mm/dd/yyyy</ion-col>   
-            <ion-col class="col"size="0.8">00:00</ion-col> 
-           <ion-col class="col"size="1.9">Kaila Guerrero</ion-col>   
-           <ion-col class="col"size="1.2">CEO</ion-col>   
-           <ion-col class="col"size="2.3">Earth City</ion-col>   
-           <ion-col class="col"size="0.9">kailaguerrero@gmail.com</ion-col>
-           <ion-col class="col"size="1.6"><ion-button shape="round" size="small" color="primary" class="regbutton" (click)="setOpen(true)">View Full Request</ion-button></ion-col>
-           <ion-col class="cols"size="1.7"><ion-select class="cols"required>
+          <ion-row *ngFor="let estab of estabList" class="table-row">
+            <ion-col class="col"size="1">{{estab.bus_regYear + '/' + estab.bus_regMonth + '/' + estab.bus_regDate}}</ion-col>   
+            <ion-col class="col"size="0.8">{{estab.bus_regHour +':'+ estab.bus_regMins}}</ion-col> 
+           <ion-col class="col"size="1.9">{{estab.bus_name}}</ion-col>   
+           <ion-col class="col"size="2.3">{{estab.bus_add1 +" "+ estab.bus_add2 +" "+ estab.bus_brgy +" "+ estab.bus_city}}</ion-col>   
+           <ion-col class="col"size="0.9">{{estab.bus_email}}</ion-col>
+           <ion-col class="col"size="1.6"><ion-button shape="round" size="small" color="primary" class="regbutton" (click)="setOpen(true, estab)">View Full Request</ion-button></ion-col>
+           <ion-col class="cols"si  ze="1.7"><ion-select class="cols"required>
             <ion-select-option value="Approve">Approve Request</ion-select-option>
             <ion-select-option value="Decline">Decline Request</ion-select-option>
             <ion-select-option value="other">Other</ion-select-option>
@@ -60,46 +56,40 @@
         <ion-toolbar>
           <ion-title>All Information</ion-title>
           <ion-buttons slot="end">
-            <ion-button style="color: azure;"(click)="setOpen(false)">Close</ion-button>
+            <ion-button style="color: azure;"(click)="isModalOpen = false">Close</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-
-
-
-       
-        
-     
         <ion-list class="register-form">
           <!-- First row -->
           <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">User Information</h1>
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Last Name" value="Guerrero" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input  [(ngModel)] = "user_lname" name="user_lname" label="Last Name" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
-              <ion-input label="Last Name" value="Marie Kaila" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "user_fname" name="user_fname" label="First Name" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
-              <ion-input label="Middle Name" value="Gabayno" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "user_mname" name="user_mname" label="Middle Name" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
           <ion-row>
           <ion-col>
             <ion-item>
-            <ion-input label="Contact Number" value="099929299" labelPlacement="stacked"[readonly]="true"></ion-input>
+            <ion-input [(ngModel)] = "user_contact" name="user_contact" label="Contact Number" labelPlacement="stacked"[readonly]="true"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-            <ion-input label="Email Address" value="kailaguerrero@gmail.com" labelPlacement="stacked"[readonly]="true"></ion-input>
+            <ion-input [(ngModel)] = "user_email" name="user_email" label="Email Address" labelPlacement="stacked"[readonly]="true"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -107,26 +97,17 @@
         <ion-row>
           <ion-col>
             <ion-item>
-            <ion-input label="Business Username" value="villaneyra_" labelPlacement="stacked"[readonly]="true"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-            <ion-input type="password" label="password" value="villaneyra123" labelPlacement="stacked"[disabled]="true"></ion-input>
+            <ion-input [(ngModel)] = "bus_username" name="bus_username" label="Business Username" labelPlacement="stacked"[readonly]="true"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
 
           
-
-
-
-
           <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Establishment Information</h1>
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Name of Establishment" value="Villa Neyra" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "bus_name" name="bus_name" label="Name of Establishment" labelPlacement="stacked" [readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -134,7 +115,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Position in Establishment" value="Owner" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "user_pos" name="user_pos" label="Position in Establishment" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -142,12 +123,12 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Location of Establishment" value="Mabini Batangas" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "bus_loc" name="bus_loc" label="Location of Establishment" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
 
-          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Operating Hours</h1>
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Operating Hours & Days</h1>
           <!-- Fourth Row -->
           <ion-row>
             <ion-col>
@@ -161,13 +142,20 @@
               </ion-item>
             </ion-col>
           </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+              <ion-input label="Days Open" value="Monday, Tuesday, Wednesday, Thursday, Friday, Saturday" labelPlacement="stacked"[readonly]="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
 
           <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Contact Persons</h1>
           <!-- Fifth Row -->
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Name" value="Kaila Guerrero" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input  label="Name" value="Kaila Guerrero" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -191,7 +179,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Address" value="Batangas City" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input label="Address" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -204,7 +192,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="External Websites" value="VillaNeyra.com" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input  [(ngModel)] = "bus_exlink" name="bus_exlink" label="External Websites" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -212,7 +200,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Business Email" value="VillaNeyra@gmail.com" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input  [(ngModel)] = "bus_email" name="bus_email" label="Business Email" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -262,12 +250,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="From" value="n/a" labelPlacement="stacked"[readonly]="true"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-              <ion-input label="To" value="n/a" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input  [(ngModel)] = "bus_rates" name="bus_rates" label="From" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -276,7 +259,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-textarea rows="4" label="Description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam." labelPlacement="stacked"[readonly]="true"></ion-textarea>
+              <ion-textarea  [(ngModel)] = "bus_desc" name="bus_desc" rows="4" label="Description" labelPlacement="stacked"[readonly]="true"></ion-textarea>
               </ion-item>
             </ion-col>
           </ion-row>
