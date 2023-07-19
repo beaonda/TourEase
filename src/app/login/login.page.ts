@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FireserviceService } from '../fireservice.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-login',
@@ -49,7 +51,7 @@ export class LoginPage implements OnInit {
       alert(err.message);
       console.log(err)
     });
-  }
+  } 
 
   forgot(){
     alert("hi");

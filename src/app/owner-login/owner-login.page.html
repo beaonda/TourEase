@@ -2,7 +2,6 @@
 
 <ion-content class="ion-padding login-page">
   <div class="login-container">
-
       <ion-img class="logo" src="assets/icon/logoTE.jpg"></ion-img>
     
 
@@ -17,35 +16,40 @@
       <ion-label style="font-size: 10px;">Login as Owner</ion-label>
     </ion-segment-button>
   </ion-segment>
- -->
 
+ -->
+ <form name="loginForm" (ngSubmit)="login()" #loginForm="ngForm">
     <ion-list class="login-form">
-      <ion-item>
-  <ion-icon name="person-outline" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
-        <ion-input label="Email" labelPlacement="floating"  type="text" placeholder="Enter your email" >
+      <ion-item> 
+        <ion-icon name="person-outline" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
+        <ion-input #mail = "ngModel" label="Email" labelPlacement="floating"  type="text" placeholder="Enter your email" [(ngModel)]='email' name="email" required>
         </ion-input>
+        <ion-note slot="error" *ngIf = "mail.invalid && loginForm.submitted">Please enter a valid username</ion-note>
       </ion-item>  
 
       <ion-item>
           <ion-icon name="lock-closed" size="medium" style="margin-bottom: -2%; margin-right: 6%; color: #21757F;"></ion-icon>
-        <ion-input label="Password" labelPlacement="floating" type="password" placeholder="Enter your password">
+        <ion-input #pass = "ngModel" label="Password" labelPlacement="floating" type="password" placeholder="Enter your password" [(ngModel)]='password' name ="password" minlength="6" required>
         </ion-input>
+        <ion-note slot="error" *ngIf = "pass.invalid && loginForm.submitted">Please enter a valid username</ion-note>
       </ion-item>
 
-      <ion-button (click) = 'login()' expand="block" shape="round" size="medium" color="primary" class="login-button">Login</ion-button>
-
+      
+    </ion-list>
+      <ion-button type="submit" (click)="login()" expand="block" shape="round" size="medium" color="primary" class="login-button" [disabled] = "loginForm.invalid">Login</ion-button>
 
       <div class="forgot-password">
-        <a href="#">Forgot password?</a>
+        <a routerLink = "/forgotpass">Forgot password?</a>
       </div>
 
       <div class="Register">
-        <a style="font-size: 13px;"href="register-est">Register as Owner</a>
+        <a style="font-size: 13px;" routerLink ="/register-est">Register as Tourist Spot</a>
       </div>
 
       <div class="Through-google">
         <a href="#">Sign-in through google</a>
       </div>
-    </ion-list>
+
+  </form>
   </div>
 </ion-content>

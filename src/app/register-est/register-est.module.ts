@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { RegisterEstPageRoutingModule } from './register-est-routing.module';
 
 import { RegisterEstPage } from './register-est.page';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegisterEstPageRoutingModule
+    RegisterEstPageRoutingModule,
+    AngularFireStorageModule
   ],
   declarations: [RegisterEstPage]
 })

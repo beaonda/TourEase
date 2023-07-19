@@ -10,6 +10,15 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.regbuttons{
+  position: relative;
+    max-width: 100px;
+    margin-left: 89% ;
+    margin-top: 3%;
+    z-index: 2;
+
+}
+
 
   .background{
     
@@ -124,6 +133,14 @@ ion-col{
 /*   img {
     content: url("/path/here/to/image.png");
 } */
+
+.regbuttons{
+  padding: 1px;
+  font-size: 10px;
+  max-width: 100px;
+  margin-left: 50% ;
+  top: -20%;
+}
 
 .background{
   content: url("/assets/bg-reg-p.png");

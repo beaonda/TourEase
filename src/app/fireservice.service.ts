@@ -62,10 +62,16 @@ export class FireserviceService {
     return this.firestore.collection("users").doc().valueChanges();
   }
   saveEstDetails(data:any){
-    return this.firestore.collection("establishments").doc(data.uId).set(data);
+    return this.firestore.collection("establishments").doc(data.id).set(data);
   }
   saveOperations(data:any){
-    return this.firestore.collection("operations").doc(data.uId).set(data);
+    return this.firestore.collection("operations").doc(data.id).set(data);
+  }
+  saveContacts(data:any){
+    return this.firestore.collection("contacts").doc(data.id).set(data);
+  }
+  saveResortInfo(data:any){
+    return this.firestore.collection("resort_info").doc(data.id).set(data);
   }
   
 

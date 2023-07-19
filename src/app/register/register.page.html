@@ -9,51 +9,53 @@
     <p class="register-subtext">Embark on Your Journey with Us! Join TourEase and Unlock a World of Travel Possibilities.</p>
   </div>
 
-
-
-
-  <ion-list class="register-form" (ngSubmit)="onSubmit()">
+<form name="regForm" (ngSubmit)="onSubmit()" #regForm="ngForm">
+  <ion-list class="register-form" >
     <!-- First row -->
     <ion-row>
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">Last Name<span class="required">*</span></ion-label>
-          <ion-input name="lname"  [(ngModel)] ='lname' type="text" required></ion-input>
+          <ion-input #lastName="ngModel" [(ngModel)]="lname" name="lname" type="text" required></ion-input>
+          <ion-note slot="error" *ngIf="lastName.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">First Name<span class="required">*</span></ion-label>
-          <ion-input name="fname" [(ngModel)] ='fname' type="text" required></ion-input>
+          <ion-input #firstName="ngModel" [(ngModel)]="fname" name="fname" type="text" required></ion-input>
+          <ion-note slot="error" *ngIf="firstName.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label class="labelform"position="floating">Middle Name</ion-label>
-          <ion-input name="mname" [(ngModel)] ='mname' type="text"></ion-input>
+          <ion-input #midName="ngModel" [(ngModel)]="mname" name="mname" type="text"></ion-input>
+          <ion-note slot="error" *ngIf="midName.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
     </ion-row>
+    
 
     <!-- Second row -->
     <ion-row>
       <ion-col>
         <ion-item style="margin-top: -2.5px;">
           <ion-label class="labelform">Birthday<span class="required">*</span></ion-label>
-          <ion-input class="labelform" style="color: black;" [readonly] = true name = 'bdaylbl' [(ngModel)] = 'bdaylbl' ngDefaultControl></ion-input>
-          <ion-button expand="full" color="light" (click)="openDatePicker()">
-            Select Date
-          </ion-button>
+          <ion-input #birthday="ngModel" [(ngModel)]="bdaylbl" class="labelform" style="color: black;" [readonly] = true name = 'bdaylbl' required></ion-input>
+          <ion-button expand="full" color="light" (click)="openDatePicker()">Select Date</ion-button>
+          <ion-note slot="error" *ngIf="birthday.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">Gender<span class="required">*</span></ion-label>
-          <ion-select name="gender" [(ngModel)] ='gender' required>
+          <ion-select #gen="ngModel" [(ngModel)]="gender" name="gender"  required>
             <ion-select-option value="male">Male</ion-select-option>
             <ion-select-option value="female">Female</ion-select-option>
             <ion-select-option value="other">Other</ion-select-option>
           </ion-select>
+          <ion-note slot="error" *ngIf="gen.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -63,13 +65,15 @@
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">Contact Number<span class="required">*</span></ion-label>
-          <ion-input name="contact" [(ngModel)] ='contact' type="tel" pattern="^\+63\d{10}$" required></ion-input>
+          <ion-input #con="ngModel" [(ngModel)]="contact" name="contact" required></ion-input>
+          <ion-note slot="error" *ngIf="con.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">Email Address<span class="required">*</span></ion-label>
-          <ion-input name="email" [(ngModel)] ='email' type="email" required></ion-input>
+          <ion-input #mail="ngModel" [(ngModel)]="email" name="email" type="email" required></ion-input>
+          <ion-note slot="error" *ngIf="mail.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -79,7 +83,8 @@
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">Exact Address<span class="required">*</span></ion-label>
-          <ion-input name="address" [(ngModel)] ='address' required></ion-input>
+          <ion-input #add="ngModel" [(ngModel)]="address" name="address"  required></ion-input>
+          <ion-note slot="error" *ngIf="add.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -89,7 +94,8 @@
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">Username<span class="required">*</span></ion-label>
-          <ion-input name="uname" [(ngModel)] ='uname' type="text" required></ion-input>
+          <ion-input #username="ngModel" [(ngModel)]="uname" name="uname" type="text" required></ion-input>
+          <ion-note slot="error" *ngIf="username.invalid && regForm.submitted">Enter a valid input.</ion-note>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -99,18 +105,23 @@
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating">Password<span class="required">*</span></ion-label>
-          <ion-input name="pword" [(ngModel)] ='pword' type="password" required></ion-input>
-          
+          <ion-input #firstPass="ngModel" [(ngModel)]="pword" name="pword" minlength="6" type="password" required></ion-input>
+          <ion-note *ngIf="firstPass.invalid" slot="error">Passwords must be atleast 6 characters long.</ion-note>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label class="labelform" position="floating" errorText="Passwords don't match">Re-enter Password<span class="required">*</span></ion-label>
-          <ion-input name="pword2" [(ngModel)] ="pword2" type="password" required></ion-input>
-          <ion-note slot="error" *ngIf="pword != pword">Passwords don't match</ion-note>
+          <ion-input [(ngModel)]="pword2" #secondPass="ngModel" name="pword2" minlength="6" type="password" required></ion-input>
+          <ion-note slot="error" *ngIf="pword != pword2">Passwords don't match</ion-note>
+          <ion-note slot="error" *ngIf="secondPass.invalid && regForm.submitted">Please enter a valid input</ion-note>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-list>
-  <ion-button (click)="onSubmit()" type="submit" expand="block" shape="round" size="large" color="primary" class="register-button">Register</ion-button>
+ 
+  <div>
+    <ion-button (click)="onSubmit()" type="submit" expand="block" shape="round" size="large" color="primary" class="register-button">Register</ion-button>  
+  </div>
+</form>
 </ion-content>

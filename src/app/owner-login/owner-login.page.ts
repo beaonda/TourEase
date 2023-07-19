@@ -40,7 +40,7 @@ export class OwnerLoginPage implements OnInit {
         this.fireService.getUserDetails({uid:res.user.uid}).subscribe((res:any)=>{
           console.log(res);
   
-        }, (err:any)=>{
+        }, (err:any)=>{ 
           console.log(err);
         });
       }

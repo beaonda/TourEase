@@ -8,13 +8,13 @@
 </ion-header>
 
 
-<ion-content class="ion-padding owner-screen">
+<ion-content class="ion-padding owner-screen" id="here-main">
   <div class="note">
     <p> Your registration is still under review.</p>
 </div>
 </ion-content>
 
-<ion-menu menu-id ="owner" content-id ="main">
+<ion-menu menu-id ="owner" content-id ="here-main">
   <ion-header> 
     <ion-toolbar>
       <ion-title class="menuowner">Menu</ion-title>
@@ -34,13 +34,18 @@
             <ion-label>Manage</ion-label>
           </ion-item>
         </ion-menu-toggle>
-      <ion-menu-toggle>
-        <ion-item routerLink ="/tab3">
-          <ion-icon name="people-outline" slot="start"></ion-icon>
-          <ion-label>Notifications</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink ="/tab3">
+            <ion-icon name="people-outline" slot="start"></ion-icon>
+            <ion-label>Notifications</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink ="/owner-login">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Log-out</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
-  <ion-router-outlet id="main"></ion-router-outlet>

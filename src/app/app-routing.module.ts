@@ -8,7 +8,17 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'admin',
+    redirectTo: '/login/adminlogin',
+    pathMatch: 'full'
+  },
+  {
+    path: 'owner',
+    redirectTo: '/owner-login',
     pathMatch: 'full'
   },
   {
@@ -58,7 +68,8 @@ const routes: Routes = [
   {
     path: 'tab3',
     loadChildren: () => import('./owner/tab3/tab3.module').then( m => m.Tab3PageModule)
-  },  {
+  },
+  {
     path: 'owner-login',
     loadChildren: () => import('./owner-login/owner-login.module').then( m => m.OwnerLoginPageModule)
   },

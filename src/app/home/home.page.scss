@@ -2,8 +2,31 @@ ion-content {
   --background: url("/assets/WELCOME.png") no-repeat;
   --background-size:auto;
   --max-width: fit-content;
+} 
+
+#profilePic{
+  font-size:100px;
+  color:#21757f;
 }
 
+.profilePicCon{
+  width:100px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#username{
+  text-align:center;
+}
+
+#menuCon{
+  --background:
+}
+
+#menuHead{
+  --background:#21757f;
+  color:white;
+}
 
 .slide-content {
   position: absolute;

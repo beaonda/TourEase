@@ -6,9 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-
-
-<ion-content [fullscreen]="true" id="main-content" main scroll-y="true">
+<ion-content [fullscreen]="true" main scroll-y="true" id="main-content">
   <swiper-container #swiper (ionSlideDidChange)="swiperSlideChanged($event)" [loop]="true" [pagination]="true" *ngIf="loginType === 'trending'">
     <swiper-slide>
       <div class="slide-content">
@@ -166,14 +164,29 @@
   </ion-toolbar>
 </ion-footer>
 
-<ion-menu menu-id="home-menu" contentId ="main-content">
-  <ion-header>
-    <ion-toolbar>
+<ion-menu menu-id="home-menu" contentId ="main-content" slot="end">
+  <ion-header >
+    <ion-toolbar id="menuHead">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
+  <ion-content id="menuCon">
+    <div class="profile">
+      <div class="profilePicCon">
+        <ion-icon name="person-circle-outline" id="profilePic"></ion-icon>
+      </div>
+      <div id="username">
+        Username
+      </div>
+    </div>
+    
+    
     <ion-list>
+      <ion-menu-toggle>
+        <ion-item *ngIf="!(auth.user | async)" routerLink = "/login">
+          <ion-label>Login/Signup</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
       <ion-menu-toggle>
         <ion-item routerLink = "/profile">
           <ion-label>Profile</ion-label>
@@ -195,7 +208,7 @@
         </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
-        <ion-item routerLink = "/login">
+        <ion-item (click) = "logout()" *ngIf="(auth.user | async)" routerLink="">
           <ion-label>Log Out</ion-label>
         </ion-item>
       </ion-menu-toggle>
@@ -207,5 +220,5 @@
     </ion-list>
   </ion-content>
 </ion-menu>
-<ion-router-outlet id="main-content"></ion-router-outlet>
+
 

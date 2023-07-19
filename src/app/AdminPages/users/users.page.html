@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
+      <ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
     </ion-buttons>
     <ion-title>Users</ion-title>
   </ion-toolbar>
@@ -9,39 +9,26 @@
 
 
 
-<ion-content [fullscreen]="true">
-  <ion-row>
-    <ion-col class="search">
+<ion-content [fullscreen]="true" scrollX="true">
+    <div class="search">
       <ion-searchbar animated="true" placeholder="Search"></ion-searchbar>
-    </ion-col>
-
-  </ion-row>
-  <ion-row class="try">
-    <ion-col class ="tablecol">
-  <!--     <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CONTACT PERSON</h1> -->
-      <ion-item class="table-item">
-        <ion-grid class="table">
+    </div>
+        <ion-grid scrollX="true" class="table" fixed="true">
           <ion-row class="table-row">
-            <ion-col class="columns">Username</ion-col>
-            <ion-col class="columns">Full Name</ion-col>
-            <ion-col class="columns">Email</ion-col>
-            <ion-col class="columns">Contact Number</ion-col>
-            <ion-col class="columns">Gender</ion-col>
-            <ion-col class="columns">View Profile</ion-col>
-            <ion-col class="columns">Selection</ion-col>
+            <ion-col class="columns" size="2">Username</ion-col>
+            <ion-col class="columns" size="2">Full Name</ion-col>
+            <ion-col class="columns" size="2">Email</ion-col>
+            <ion-col class="columns" size="2">Contact Number</ion-col>
+            <ion-col class="columns" size="2">View Profile</ion-col>
+            <ion-col class="columns" size="2">Selection</ion-col>
           </ion-row>
           <ion-row class="reg-data" *ngFor = "let user of usersList">
-            <ion-col class="col">{{user.uname}}</ion-col>
-            <ion-col class="col">{{user.fname + ' ' + user.mname + ' ' + user.lname}}</ion-col>
-            <ion-col class="col">{{user.email}}</ion-col>
-            <ion-col class="col">{{user.contact}}</ion-col>
-            <ion-col class="col">{{user.gender}}</ion-col>
-            <ion-col class="col"><ion-button>View</ion-button></ion-col>
-            <ion-col class="col"></ion-col>
-          </ion-row>
-          
+            <ion-col class="col" size="2">{{user.uname}}</ion-col>
+            <ion-col class="col" size="2">{{user.fname + ' ' + user.mname + ' ' + user.lname}}</ion-col>
+            <ion-col class="col" size="2">{{user.email}}</ion-col>
+            <ion-col class="col" size="2">{{user.contact}}</ion-col>
+            <ion-col class="col" size="2"><ion-button id="btnView">View</ion-button></ion-col>
+            <ion-col class="col" size="2"></ion-col>
+          </ion-row> 
         </ion-grid>
-      </ion-item>
-    </ion-col>
-  </ion-row>
 </ion-content>

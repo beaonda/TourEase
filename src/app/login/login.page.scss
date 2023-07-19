@@ -5,8 +5,6 @@
     
   }
 
-//comment
-  
   .login-container {
     max-width: 400px;
     margin:auto;
@@ -33,13 +31,10 @@
   ion-item ion-input{
     --highlight-color-focused:#6ac5f6;
     --color:#787575;
-    
-     
       font-size: 16px;
   }
 
   .login-form {
-  
     background-color: #ffffff00;
     border-radius: 8px;
     padding:1.50rem;
@@ -82,12 +77,6 @@
 
   }
 
-
-  ion-item {
-    ion-label {
-      font-size: 100px; /* Adjust the font size to your desired value */
-    }
-  }
 
 
 

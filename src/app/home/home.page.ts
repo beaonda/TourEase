@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import Swiper from 'swiper';
 import { IonMenu } from '@ionic/angular';
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { FireserviceService } from '../fireservice.service';
 import { Router } from '@angular/router';
@@ -19,11 +19,25 @@ export class HomePage implements OnInit {
 
   loginType: string ='default';
   e:any;
+  user:any;
 
-  constructor(private menuController: MenuController) {}
+  constructor(
+    private menuController: MenuController,
+    public router:Router, 
+    public fireService:FireserviceService,
+    public auth: AngularFireAuth
+    ) {}
 
   ngOnInit() {
     this.initializeSwiper();
+    
+
+  }
+
+  logout(){
+    this.auth.signOut().then(() => {
+      this.router.navigate(['/login']);
+   });
   }
 
   initializeSwiper() {

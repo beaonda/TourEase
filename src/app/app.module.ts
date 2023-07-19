@@ -12,6 +12,9 @@ import { getAnalytics } from "firebase/analytics";
 import { environment } from 'src/environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,11 +22,17 @@ import { AngularFireModule } from '@angular/fire/compat';
     AngularFireModule.initializeApp(environment.firebase),
     BrowserModule, 
     IonicModule.forRoot(), 
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AngularFireStorageModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 
+
 })
-export class AppModule {}
+export class AppModule{
+
+}

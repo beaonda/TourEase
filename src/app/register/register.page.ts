@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { FireserviceService } from '../fireservice.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-register',
@@ -10,9 +12,10 @@ import { Router } from '@angular/router';
 })
 
 export class RegisterPage {
-  public lname:any;
-  public fname:any;
-  public mname:any;
+  mname:any;
+  fname:any;
+  lname:any;
+  btnSubmit:any;
   public bday:any;
   public age:any;
   public gender:any;
@@ -23,14 +26,37 @@ export class RegisterPage {
   public pword:any;
   public pword2:any;
   public bdaylbl:any;
+  RegisterForm: any;
+  
 
   constructor( 
     public router:Router, 
     private alertController: AlertController, 
     public fireService: FireserviceService) 
     {
+     
       
     }
+ group: any;
+ 
+    ngOnInit(){
+      /* this.RegisterForm = new FormGroup({
+        fname : new FormControl('',[Validators.required]),
+        lname : new FormControl('',[Validators.required]),
+        mname : new FormControl('',[Validators.required]),
+        bdaylbl : new FormControl('',[Validators.required]),
+        gender : new FormControl('',[Validators.required]),
+        contact : new FormControl('',[Validators.required]),
+        email : new FormControl('',[Validators.required]),
+        address : new FormControl('',[Validators.required]),
+        uname : new FormControl('',[Validators.required]),
+        pword : new FormControl('',[Validators.required]),
+        pword2 : new FormControl('',[Validators.required]),
+      }); */
+      
+      }
+    
+    
 
   openDatePicker() {
     // Open the date picker logic here
@@ -68,11 +94,7 @@ export class RegisterPage {
       alert.present();
     });
   }
-
-  ngOnInit(){
-
-  }
-
+ /* 
   onSubmit(){
     this.fireService.signup({email:this.email, pword:this.pword}).then(
       res=>{
@@ -81,9 +103,9 @@ export class RegisterPage {
           let data = {
             uname: this.uname,
             uid: res.user?.uid,
-            lname: this.lname,
-            fname: this.fname,
-            mname: this.mname,
+            lname: this.group.lname,
+            fname: this.group.fname,
+            mname: this.group.mname,
             bday: this.bday,
             gender: this.gender,
             contact: this.contact,
@@ -105,6 +127,11 @@ export class RegisterPage {
       }
     );
   
+  }
+ */
+
+  onSubmit(){
+    
   }
 
 }

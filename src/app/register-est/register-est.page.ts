@@ -1,7 +1,11 @@
-import { Component} from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { FireserviceService } from '../fireservice.service';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Storage, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-register-est',
@@ -18,37 +22,113 @@ export class RegisterEstPage{
   locBgy:any;
   locCity:any;
   locPosCode:any;
-  locProvince:any;
-  monday:any;
-  tuesday:any;
-  wednesday:any;
-  thursday:any;
-  friday:any;
-  saturday:any;
-  sunday:any;
-  
+  locProvince:any = "Batangas";
+  monday:any = false;
+  tuesday:any = false;
+  wednesday:any = false;
+  thursday:any = false;
+  friday:any = false;
+  saturday:any = false;
+  sunday:any = false;
+  image:any;
+  estRegForm:any;
+  public lname:any;
+  public fname:any;
+  public mname:any;
+  public contact:any;
+  public email:any;
+  public buname:any;
+  public bpword:any;
+  public bpword2:any;
+  public est_name:any;
+  public pos:any;
+  public est_loc:any;
+  public oh_from:any;
+  public oh_to:any;
+  public ex_link:any;
+  public b_email:any;
+  public reg_status:any;
+  estab:any;
+  estabItem:any;
+  contact_name:any;
+  contact_email:any;
+  contact_number:any;
+  contact_pos:any;
+  valid:any;
 
-public lname:any;
-public fname:any;
-public mname:any;
-public contact:any;
-public email:any;
-public buname:any;
-public bpword:any;
-public bpword2:any;
-public est_name:any;
-public pos:any;
-public est_loc:any;
-public oh_from:any;
-public oh_to:any;
-public ex_link:any;
-public b_email:any;
-public reg_status:any;
-estab:any;
-estabItem:any;
+  saveOp(data:any){
+    let operationData = {
+      est_id:data.id,
+      timeFrom:this.oh_from,
+      timeTo:this.oh_to,
+      mon:this.monday,
+      tue:this.tuesday,
+      wed:this.wednesday,
+      thu:this.thursday,
+      fri:this.friday,
+      sat:this.saturday,
+      sun:this.sunday
+    }
+    this.fireService.saveOperations(operationData).then(
+      res=>{
+        alert("Added to OH");
+        console.log(res);
+        this.router.navigate(['/tab1']);
+      }, err=>{
+        alert(err.message);
+        console.log(err);
+      }
+    );
+  }
 
-registerEst(){
-  var dateNow = new Date();
+  saveContacts(data:any){
+    let contactData = {
+      est_id:data.id,
+      contact_name:this.contact_name,
+      contact_email:this.contact_email,
+      contact_number:this.contact_number,
+      contact_pos:this.contact_pos,
+    }
+    this.fireService.saveContacts(contactData).then(
+      res=>{
+        alert("Successfully Added");
+        console.log(res);
+      }, err=>{
+        alert(err.message);
+        console.log(err);
+      }
+    ); 
+  }
+
+  saveResort(data:any){
+    let resortData = {
+      est_id: data.id,
+      no_of_rooms: this.resortForm.rooms,
+      no_of_pools: this.resortForm.pools,
+      airconditioned: this.resortForm.ac,
+      activities: this.resortForm.activities,
+    }
+    this.fireService.saveResortInfo(resortData).then(
+      res=>{
+        alert("Successfully Added Resort Info");
+        console.log(res);
+        this.saveOp(data);
+      }, err=>{
+        alert(err.message);
+        console.log(err);
+      }
+    ); 
+  }
+
+
+
+registerEst(valid:any){
+
+  if(valid){
+    alert("Please make sure all the inputs are valid");
+    console.log("Invalid");
+  } else {
+    var dateNow = new Date();
   var hour = dateNow.getHours();
   var minutes = dateNow.getMinutes();
   var year = dateNow.getFullYear();
@@ -56,6 +136,7 @@ registerEst(){
   var month = dateNow.getMonth();
 
   let data = {
+    id: this.firestore.createId(),
     user_lname:this.lname,
     user_fname:this.fname,
     user_mname:this.mname,
@@ -85,41 +166,70 @@ registerEst(){
   
   this.fireService.saveEstDetails(data).then(
     res=>{
-      let operationData = {
-        timeFrom:this.oh_from,
-        timeTo:this.oh_to,
-        mon:this.monday,
-        tue:this.tuesday,
-        wed:this.wednesday,
-        thu:this.thursday,
-        fri:this.friday,
-        sat:this.saturday,
-        sun:this.sunday
-        
-      }
-      this.fireService.saveOperations(operationData).then(
-        res=>{
-          console.log(res);
-        }, err=>{
-          alert(err.message);
-          console.log(err);
-        }
-      );
+      alert("Successfully Added");
+      this.saveResort(data);
     }, err=> {
       alert(err.message);
       console.log(err);
     }
-  );
-  
+  )
+  }
 }
 
 constructor(
   public router:Router, 
   private alertController: AlertController, 
-  public fireService: FireserviceService) 
+  public fireService: FireserviceService,
+  public firestore: AngularFirestore, 
+  public storage: Storage,
+ ) 
   {
 
   }
+
+  //
+async takePicture() {
+  try {
+    if(Capacitor.getPlatform() !='web') await Camera.requestPermissions();
+    const image = await Camera.getPhoto({
+      quality: 90,
+      //allowEditing:false,
+      source:CameraSource.Prompt,
+      width:600,
+      resultType:CameraResultType.DataUrl
+    });
+    console.log('image',image);
+    this.image=image.dataUrl;
+    const blob=this.dataURLtoBlob(image.dataUrl);
+    const url = await this.uploadImage(blob,image);
+    console.log(url); 
+  } catch(e) {
+    console.log(e);
+  } 
+}
+
+dataURLtoBlob(dataurl:any) {
+  var arr = dataurl.split(','), mime=arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]), n= bstr.length, u8arr =new Uint8Array(n);
+  while(n--){
+      u8arr[n]=bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr],{type:mime});
+}
+
+async uploadImage(blob: any, imageData:any) {
+  try { 
+    const currentDate = Date.now();
+    const filePath = 'estImages/${currentDate}.${imageData.format}';
+    const fileRef =  ref(this.storage, filePath);
+    const task = await uploadBytes (fileRef, blob);
+    console.log('task: ', task);
+    const url = getDownloadURL(fileRef);
+    return url;
+  } catch (e) {
+    throw(e);
+  } 
+}
 
 public selectedCategory = {
     name: 'RESORT',

@@ -1,56 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="admin"></ion-menu-button>
+      <ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
     </ion-buttons>
     <ion-title>Registration</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-row>
-    <ion-col class="search">
+    <div class="search">
       <ion-searchbar animated="true" placeholder="Search"></ion-searchbar>
-    </ion-col>
+    </div>
 
-  </ion-row>
-  <ion-row class="try">
-    <ion-col class ="tablecol">
-  <!--     <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CONTACT PERSON</h1> -->
-      <ion-item class="table-item">
         <ion-grid class="table">
           <ion-row class="table-row">
             <ion-col class="columns" size="1">Date</ion-col>
-            <ion-col class="columns"size="0.8">Time</ion-col>
-            <ion-col class="columns"size="2">Name of Establishment</ion-col>
-            <ion-col class="columns"size="2.3">Location</ion-col>
-            <ion-col class="columns"size="0.9">Business Email</ion-col>
-            <ion-col class="columns"size="1.6">Action</ion-col>
-            <ion-col class="columns"size="1.7">Selection</ion-col>
+            <ion-col class="columns" size="1">Time</ion-col>
+            <ion-col class="columns" size="2">Name of Establishment</ion-col>
+            <ion-col class="columns" size="4">Location</ion-col>
+            <ion-col class="columns" size="2">Business Email</ion-col>
+            <ion-col class="columns" size="1">View</ion-col>
+            <ion-col class="columns" size="1">Action</ion-col>
           
           </ion-row>
           <ion-row *ngFor="let estab of estabList" class="table-row">
             <ion-col class="col"size="1">{{estab.bus_regYear + '/' + estab.bus_regMonth + '/' + estab.bus_regDate}}</ion-col>   
-            <ion-col class="col"size="0.8">{{estab.bus_regHour +':'+ estab.bus_regMins}}</ion-col> 
-           <ion-col class="col"size="1.9">{{estab.bus_name}}</ion-col>   
-           <ion-col class="col"size="2.3">{{estab.bus_add1 +" "+ estab.bus_add2 +" "+ estab.bus_brgy +" "+ estab.bus_city}}</ion-col>   
-           <ion-col class="col"size="0.9">{{estab.bus_email}}</ion-col>
-           <ion-col class="col"size="1.6"><ion-button shape="round" size="small" color="primary" class="regbutton" (click)="setOpen(true, estab)">View Full Request</ion-button></ion-col>
-           <ion-col class="cols"si  ze="1.7"><ion-select class="cols"required>
-            <ion-select-option value="Approve">Approve Request</ion-select-option>
-            <ion-select-option value="Decline">Decline Request</ion-select-option>
-            <ion-select-option value="other">Other</ion-select-option>
+            <ion-col class="col"size="1">{{estab.bus_regHour +':'+ estab.bus_regMins}}</ion-col> 
+            <ion-col class="col"size="2">{{estab.bus_name}}</ion-col>   
+            <ion-col class="col"size="4">{{estab.bus_add1 +" "+ estab.bus_add2 +" "+ estab.bus_brgy +" "+ estab.bus_city}}</ion-col>   
+            <ion-col class="col"size="2">{{estab.bus_email}}</ion-col>
+            <ion-col class="col"size="1"><ion-button shape="round" size="small" color="primary" class="regbutton" (click)="setOpen(true, estab)">View Full</ion-button></ion-col>
+            <ion-col class="cols"size="1">
+              <ion-select class="cols" placeholder="Decision">
+              <ion-select-option value="Approve">Approve Request</ion-select-option>
+              <ion-select-option value="Decline">Decline Request</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
           </ion-select></ion-col>
-      
           </ion-row>
-          
         </ion-grid>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-
-
-
 
   <ion-modal [isOpen]="isModalOpen">
     <ng-template>
@@ -286,17 +273,7 @@
             </ion-col>
           </ion-row>
 
-          
-
-
-
-
-        
-
-
 </ion-list>      
-          
-          
       </ion-content>
     </ng-template>
   </ion-modal>
