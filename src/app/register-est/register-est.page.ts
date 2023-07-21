@@ -3,9 +3,13 @@ import { AlertController } from '@ionic/angular';
 import { FireserviceService } from '../fireservice.service';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Storage, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
+import { finalize, map } from 'rxjs/operators';
+import { FileUpload } from 'src/models/FileUpload';
+import { FileuploadserviceService } from '../fileuploadservice.service';
 
 @Component({
   selector: 'app-register-est',
@@ -34,7 +38,7 @@ export class RegisterEstPage{
   estRegForm:any;
   public lname:any;
   public fname:any;
-  public mname:any;
+  public mname:any = "";
   public contact:any;
   public email:any;
   public buname:any;
@@ -55,6 +59,13 @@ export class RegisterEstPage{
   contact_number:any;
   contact_pos:any;
   valid:any;
+  pic:any;
+  description:any = "";
+  fileUploads?:any[];
+
+  ngOnInit(){
+
+  }
 
   saveOp(data:any){
     let operationData = {
@@ -73,7 +84,10 @@ export class RegisterEstPage{
       res=>{
         alert("Added to OH");
         console.log(res);
-        this.router.navigate(['/tab1']);
+        if(!(this.contact_email == null || this.contact_name == null || this.contact_number == null || this.contact_pos == null)){
+          this.saveContacts(data);
+        }
+        
       }, err=>{
         alert(err.message);
         console.log(err);
@@ -91,8 +105,9 @@ export class RegisterEstPage{
     }
     this.fireService.saveContacts(contactData).then(
       res=>{
-        alert("Successfully Added");
+        alert("Successfully Added to contacts");
         console.log(res);
+        this.router.navigate(['/tab1']);
       }, err=>{
         alert(err.message);
         console.log(err);
@@ -107,6 +122,7 @@ export class RegisterEstPage{
       no_of_pools: this.resortForm.pools,
       airconditioned: this.resortForm.ac,
       activities: this.resortForm.activities,
+      rates: this.resortForm.rates,
     }
     this.fireService.saveResortInfo(resortData).then(
       res=>{
@@ -120,6 +136,33 @@ export class RegisterEstPage{
     ); 
   }
 
+  saveHike(data:any){
+    this.hikesandtrailsForm.est_id = data.id;
+    this.fireService.saveHikeInfo(this.hikesandtrailsForm).then(
+      res=>{
+        alert("Successfully Added Resort Info");
+        console.log(res);
+        this.saveOp(data);
+      }, err=>{
+        alert(err.message);
+        console.log(err);
+      }
+    ); 
+  }
+
+  saveHeritage(data:any){
+    this.heritageForm.est_id = data.id;
+    this.fireService.saveHeritageInfo(this.heritageForm).then(
+      res=>{
+        alert("Successfully Added Resort Info");
+        console.log(res);
+        this.saveOp(data);
+      }, err=>{
+        alert(err.message);
+        console.log(err);
+      }
+    ); 
+  }
 
 
 registerEst(valid:any){
@@ -129,51 +172,59 @@ registerEst(valid:any){
     console.log("Invalid");
   } else {
     var dateNow = new Date();
-  var hour = dateNow.getHours();
-  var minutes = dateNow.getMinutes();
-  var year = dateNow.getFullYear();
-  var date = dateNow.getDay();
-  var month = dateNow.getMonth();
+    var hour = dateNow.getHours();
+    var minutes = dateNow.getMinutes();
+    var year = dateNow.getFullYear();
+    var date = dateNow.getDate();
+    var month = dateNow.getMonth();
 
-  let data = {
-    id: this.firestore.createId(),
-    user_lname:this.lname,
-    user_fname:this.fname,
-    user_mname:this.mname,
-    user_email:this.email,
-    user_contact:this.contact,
-    bus_exlink:this.ex_link,
-    bus_email:this.email,
-    bus_username:this.buname,
-    bus_pword:this.bpword,
-    bus_name:this.est_name,
-    user_pos:this.pos,
-    bus_add1:this.locAd1,
-    bus_add2:this.locAd2,
-    bus_brgy:this.locBgy,
-    bus_city:this.locCity,
-    bus_province: "Batangas",
-    bus_category: this.selectedCategory.name,
-    bus_rates: this.resortForm.from,
-    bus_desc: this.resortForm.description,
-    bus_regHour: hour,
-    bus_regMins: minutes,
-    bus_regDate: date,
-    bus_regMonth: month,
-    bus_regYear: year,
-    bus_regStatus: false,
-  }
-  
-  this.fireService.saveEstDetails(data).then(
-    res=>{
-      alert("Successfully Added");
-      this.saveResort(data);
-    }, err=> {
-      alert(err.message);
-      console.log(err);
+    let data = {
+      id: this.firestore.createId(),
+      user_lname:this.lname,
+      user_fname:this.fname,
+      user_mname:this.mname,
+      user_email:this.email,
+      user_contact:this.contact,
+      bus_exlink:this.ex_link,
+      bus_email:this.email,
+      bus_username:this.buname,
+      bus_pword:this.bpword,
+      bus_name:this.est_name,
+      user_pos:this.pos,
+      bus_add1:this.locAd1,
+      bus_add2:this.locAd2,
+      bus_brgy:this.locBgy,
+      bus_city:this.locCity,
+      bus_province: "Batangas",
+      bus_category: this.selectedCategory.name,
+      bus_desc: this.description,
+      bus_regHour: hour,
+      bus_regMins: minutes,
+      bus_regDate: date,
+      bus_regMonth: month,
+      bus_regYear: year,
+      bus_regStatus: false,
     }
-  )
-  }
+  
+    this.fireService.saveEstDetails(data).then(
+      res=>{
+        alert("Successfully Added");
+        if(data.bus_category == "RESORT"){
+          this.saveResort(data);
+        } else if (data.bus_category == "HIKES AND TRAILS") {
+          this.saveHike(data);
+        } else if (data.bus_category == "HERITAGE") {
+          this.saveHeritage(data);
+        }
+        
+        this.photoData(this.pic, this.blob, data.id);
+        this.upload(data);
+      }, err=> {
+        alert(err.message);
+        console.log(err);
+      }
+    )
+    }
 }
 
 constructor(
@@ -181,31 +232,67 @@ constructor(
   private alertController: AlertController, 
   public fireService: FireserviceService,
   public firestore: AngularFirestore, 
-  public storage: Storage,
+  public storage: AngularFireStorage,
+  public uploadService: FileuploadserviceService
  ) 
   {
 
   }
 
-  //
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+    console.log(this.selectedFiles);
+  }
+
+  upload(data:any): void {
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+        this.uploadService.pushFileToStorage(this.currentFileUpload, data).subscribe(
+          percentage => {
+            alert("Successfully uploaded certificates");
+            /* this.percentage = Math.round(percentage ? percentage : 0); */
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    }
+  }
+
+currentFileUpload?: FileUpload;
+selectedFiles?:FileList;
+blob:any;
+
+
 async takePicture() {
   try {
     if(Capacitor.getPlatform() !='web') await Camera.requestPermissions();
-    const image = await Camera.getPhoto({
+    this.pic = await Camera.getPhoto({
       quality: 90,
       //allowEditing:false,
       source:CameraSource.Prompt,
       width:600,
       resultType:CameraResultType.DataUrl
     });
-    console.log('image',image);
-    this.image=image.dataUrl;
-    const blob=this.dataURLtoBlob(image.dataUrl);
-    const url = await this.uploadImage(blob,image);
-    console.log(url); 
+    console.log('image',this.pic);
+    this.image=this.pic.dataUrl;
+    this.blob=this.dataURLtoBlob(this.pic.dataUrl);
   } catch(e) {
     console.log(e);
   } 
+}
+
+async photoData(image:any, blob:any, est_id:any){
+  try{
+    const url = await this.uploadImage(est_id,blob,image);
+  } catch(e) {
+    console.log(e);
+  }
 }
 
 dataURLtoBlob(dataurl:any) {
@@ -217,15 +304,28 @@ dataURLtoBlob(dataurl:any) {
   return new Blob([u8arr],{type:mime});
 }
 
-async uploadImage(blob: any, imageData:any) {
+async uploadImage(est_id:any, blob: any, imageData:any) {
   try { 
     const currentDate = Date.now();
-    const filePath = 'estImages/${currentDate}.${imageData.format}';
-    const fileRef =  ref(this.storage, filePath);
-    const task = await uploadBytes (fileRef, blob);
+    const filePath = 'estImages/' + currentDate +'.'+ imageData.format;
+    const fileRef =  this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, blob);
+    let photoData = {
+      imageUrl:'',
+      est_id:'',
+      uploadTime: currentDate,
+    };
+    
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(downloadURL => {
+          photoData.imageUrl = downloadURL;
+          photoData.est_id = est_id;
+          this.fireService.savePhotos(photoData);
+        });
+      })
+    ).subscribe();
     console.log('task: ', task);
-    const url = getDownloadURL(fileRef);
-    return url;
   } catch (e) {
     throw(e);
   } 
@@ -241,7 +341,7 @@ public newCat =
 
   categories = [
     { name: 'RESORT', form: 'resortForm' },
-    { name: 'ESTABLISHMENTS', form: 'establishmentsForm' },
+    { name: 'HIKES AND TRAILS', form: 'hikesandtrailsForm' },
     { name: 'HERITAGE', form: 'heritageForm' }
   ];
 
@@ -286,27 +386,36 @@ public newCat =
   ]
   
   resortForm = {  
-
     pools: '',
     rooms: '',
     ac: '',
     activities: '',
-    from: '',
-    to: '',
-    description: '',
-    photos: '',
-    cert: '',
-
-    // Define fields for resort form
-    // Example: name: string, email: string, etc.
-  };
-
-  establishmentsForm = {
-    // Define fields for establishments form
+    rates: ''
   };
 
   heritageForm = {
-    // Define fields for heritage form
+    est_id: '',
+    categ: '',
+    accessibility: '',
+    otherInput: '',
+    date_heritage: '',
+    guidedtours: '',
+    photography: '',
+    facilities: '',
+    rates: ''
+  };
+
+  hikesandtrailsForm = {
+    est_id: '',
+    name_mountain: '',
+    difficulty: '',
+    length: '',
+    route: '',
+    suitability: '',
+    act: '',
+    type_fee: '',
+    rates:'',
+    elevation: '',
   };
 
 

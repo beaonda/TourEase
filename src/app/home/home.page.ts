@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { FireserviceService } from '../fireservice.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,10 @@ export class HomePage implements OnInit {
   loginType: string ='default';
   e:any;
   user:any;
+  estabList:any;
+  photoList:any;
+  photoLink:any;
+  estab:any;
 
   constructor(
     private menuController: MenuController,
@@ -30,15 +35,77 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.initializeSwiper();
-    
-
+    this.retrieveEstabs();
+    this.retrievePhotos();
+    this.setPhoto();
   }
+
+  retrieveEstabs(): void {
+    this.fireService.getAllEstabs().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+        )
+      )
+    ).subscribe(data2 => {
+      this.estabList = data2;
+      this.fireService.getPhotos().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c =>
+            ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+          )
+        )
+      ).subscribe(data => {
+        console.log(data);
+        for(var x in data2){
+          for(var y in data){
+            if(this.estabList[x].id == this.photoList[y].est_id){
+              this.estabList[x].photoLink = this.photoList[y].imageUrl;
+            }else{
+              console.log("No photo found");
+            }
+          }
+        }
+      });
+    });
+  }
+
+  retrievePhotos(): void {
+    this.fireService.getPhotos().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+        )
+      )
+    ).subscribe(data => {
+      console.log(data);
+      this.photoList = data;
+    });
+  }
+
+
+  setPhoto(){
+    console.log(this.estabList);
+    console.log(this.photoList);
+    for(var x in this.estabList){
+      for(var y in this.photoList){
+        console.log("Iterate One");
+        if(this.estabList[x].id == this.photoList[y].est_id){
+          this.estabList[x].photoLink = this.photoList[y].imageUrl;
+        }else{
+          console.log("No photo found");
+        }
+      }
+    }
+  }
+
 
   logout(){
     this.auth.signOut().then(() => {
       this.router.navigate(['/login']);
    });
   }
+
 
   initializeSwiper() {
     if (this.swiperRef) {

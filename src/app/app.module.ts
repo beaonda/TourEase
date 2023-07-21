@@ -6,16 +6,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { environment } from 'src/environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,9 +20,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFireStorageModule,
+    AngularFireStorageModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,}],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

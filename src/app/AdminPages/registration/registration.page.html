@@ -23,7 +23,10 @@
             <ion-col class="columns" size="1">Action</ion-col>
           
           </ion-row>
-          <ion-row *ngFor="let estab of estabList" class="table-row">
+          <ng-container *ngFor="let estab of estabList" >
+
+          
+          <ion-row *ngIf = "estab.bus_regStatus == false" class="table-row">
             <ion-col class="col"size="1">{{estab.bus_regYear + '/' + estab.bus_regMonth + '/' + estab.bus_regDate}}</ion-col>   
             <ion-col class="col"size="1">{{estab.bus_regHour +':'+ estab.bus_regMins}}</ion-col> 
             <ion-col class="col"size="2">{{estab.bus_name}}</ion-col>   
@@ -31,13 +34,15 @@
             <ion-col class="col"size="2">{{estab.bus_email}}</ion-col>
             <ion-col class="col"size="1"><ion-button shape="round" size="small" color="primary" class="regbutton" (click)="setOpen(true, estab)">View Full</ion-button></ion-col>
             <ion-col class="cols"size="1">
-              <ion-select class="cols" placeholder="Decision">
+              <ion-select class="cols" placeholder="Decision" name="act" (ionChange) = "handleChange($event,estab)">
               <ion-select-option value="Approve">Approve Request</ion-select-option>
               <ion-select-option value="Decline">Decline Request</ion-select-option>
-              <ion-select-option value="other">Other</ion-select-option>
           </ion-select></ion-col>
           </ion-row>
+        </ng-container>
         </ion-grid>
+
+        
 
   <ion-modal [isOpen]="isModalOpen">
     <ng-template>
@@ -122,19 +127,19 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="From" value="12:00" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "open_from" label="From" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
-              <ion-input label="To" value="1:00" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "open_to" label="To"labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Days Open" value="Monday, Tuesday, Wednesday, Thursday, Friday, Saturday" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "daysOpen" label="Days Open" value="No data provided" labelPlacement="stacked" [readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -144,7 +149,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input  label="Name" value="Kaila Guerrero" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input  label="Name" [(ngModel)] = "con_name" name = "con_name" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -152,7 +157,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Position" value="Owner" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input label="Position" [(ngModel)] = "con_pos" name = "con_pos" value="Owner" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -160,7 +165,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Contact Number" value="1234567890" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input label="Contact Number" [(ngModel)] = "con_num" name = "con_num" value="1234567890" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -168,7 +173,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Address" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input label="Email" [(ngModel)] = "con_mail" name = "con_mail" labelPlacement="stacked"[readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -195,11 +200,11 @@
           </ion-row>
 
 
-          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Category</h1>
+          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Category Info</h1>
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-input label="Category" value="Resort" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-input [(ngModel)] = "selectedCategory.name" name = "selectedCategory" label="Category" value="Resort" labelPlacement="stacked" [readonly]="true"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -208,47 +213,187 @@
 
           <ion-row>
             <ion-col>
-              <ion-item>
-              <ion-input label="No. of Rooms" value="5" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+                <!-- Render resort form fields -->
+                <ion-label class="labelform" position="floating">Number of Rooms</ion-label>
+                <ion-input [readonly]="true" #rooms = "ngModel" [(ngModel)]="resortForm.rooms" name="rooms" type="number"     required ></ion-input>
+                
               </ion-item>
             </ion-col>
             <ion-col>
-              <ion-item>
-              <ion-input label="No. of Pools" value="3" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-item *ngIf="selectedCategory.name == 'RESORT'">      
+                <ion-label class="labelform" position="floating">Number of Pools</ion-label>
+                <ion-input #pools = "ngModel" [(ngModel)]="resortForm.pools" name="pools" type="number" required [readonly]="true"></ion-input>
+                          
+              </ion-item>       
+            </ion-col>        
+            <ion-col>        
+              <ion-item *ngIf="selectedCategory.name == 'RESORT'">        
+                <ion-label class="labelform"  position="floating">Airconditioned?</ion-label>        
+                <ion-input [readonly]="true" #aircon = "ngModel" name="ac" [(ngModel)] ='resortForm.ac' required></ion-input>
+              </ion-item>       
+            </ion-col>        
+          </ion-row>             
+                
+          <ion-row>     
+            <ion-col>
+              <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+                <ion-label class="labelform" position="floating">Other Activities</ion-label>
+                <ion-input [readonly]="true" #acts = "ngModel" [(ngModel)]="resortForm.activities" name="activities" type="text" required></ion-input>
+              
               </ion-item>
-            </ion-col>
+            </ion-col>      
           </ion-row>
-
+      
+          <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 18px; color: #21757F; font-weight: bold;">Rates</h1>
+      
           <ion-row>
             <ion-col>
-              <ion-item>
-              <ion-input label="Airconditioned" value="Yes" labelPlacement="stacked"[readonly]="true"></ion-input>
+              <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+                <ion-label class="labelform"  name="from" position="floating">Price Range</ion-label>
+                <ion-input [readonly]="true" #price = "ngModel" name="resortForm.rates" [(ngModel)]="resortForm.rates" required>
+                </ion-input>
+      
               </ion-item>
+            </ion-col> 
+          </ion-row>
+      
+          
+          <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+            <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+              <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+               <ion-label class="labelform" position="floating">Name of Mountain</ion-label>
+               <ion-input [readonly]="true" [(ngModel)]="hikesandtrailsForm.name_mountain" name="name_mountain" type="text" required></ion-input>
+             </ion-item>
             </ion-col>
           </ion-row>
-
-          <ion-row>
-            <ion-col>
-              <ion-item>
-              <ion-input label="Other Activities" value="windsurfing, snorkeling, surfing, swimming" labelPlacement="stacked"[readonly]="true"></ion-input>
+      
+          <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+            <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+              <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+                <ion-label class="labelform"  position="floating">Difficulty</ion-label>
+                <ion-input [readonly]="true" name="difficulty" [(ngModel)] ='hikesandtrailsForm.difficulty' required></ion-input>
               </ion-item>
             </ion-col>
-          </ion-row>
-
-          <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Rates</h1>
-          <ion-row>
-            <ion-col>
-              <ion-item>
-              <ion-input  [(ngModel)] = "bus_rates" name="bus_rates" label="From" labelPlacement="stacked"[readonly]="true"></ion-input>
+            <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+              <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+                <ion-label class="labelform"  position="floating">Length</ion-label>
+                <ion-input [readonly]="true" name="length" [(ngModel)] ='hikesandtrailsForm.length' required>
+                </ion-input>
               </ion-item>
             </ion-col>
+            <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+              <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+                <ion-label class="labelform"  position="floating">Elevation Gain</ion-label>
+                <ion-input [readonly]="true" name="elevation" [(ngModel)] ='hikesandtrailsForm.elevation' required></ion-input>
+             </ion-item>
+            </ion-col>
           </ion-row>
-
+      
+          <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+           <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+             <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+               <ion-label class="labelform"  position="floating">Route Type</ion-label>
+               <ion-input [readonly]="true" name="route" [(ngModel)] ='hikesandtrailsForm.route' required></ion-input>
+                 
+            </ion-item>
+           </ion-col>
+           <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+            <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+              <!-- Render resort form fields -->
+              <ion-label class="labelform"  position="floating">Suitability</ion-label>
+              <ion-input [readonly]="true" name="suitability" [(ngModel)] ='hikesandtrailsForm.suitability' required></ion-input>
+           </ion-item>
+          </ion-col>  
+         </ion-row>
+      
+         <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+          <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+            <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+             <ion-label class="labelform" position="floating">Other Activities</ion-label>
+             <ion-input [readonly]="true" [(ngModel)]="hikesandtrailsForm.act" name="act" type="text" required></ion-input>
+           </ion-item>
+          </ion-col>
+        </ion-row>
+      
+        <h1 *ngIf="selectedCategory.name == 'HIKES AND TRAILS'" style="font-size: 18px; color: #21757F; font-weight: bold;">Rates</h1>
+        <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+          <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+            <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+              <ion-label class="labelform"  position="floating">Type of Fee</ion-label>
+              <ion-input [readonly]="true" name="type_fee" [(ngModel)] ='hikesandtrailsForm.type_fee' required></ion-input>
+           </ion-item>
+          </ion-col>
+          <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+            <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+              <ion-label class="labelform"  name="from" position="floating">Price Range</ion-label>
+              <ion-input [readonly]="true" name="rates" [(ngModel)]="hikesandtrailsForm.rates" required></ion-input>
+           </ion-item>
+          </ion-col>
+        </ion-row>
+        
+        <!--Heritage-->
+        <ion-row *ngIf="selectedCategory.name == 'HERITAGE'">
+          <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+            <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+              <ion-label class="labelform"  position="floating">Category</ion-label>
+              <ion-input [readonly]="true" name="categ" [(ngModel)] ='heritageForm.categ' required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+            <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+              <ion-label class="labelform"  position="floating">Accessibility</ion-label>
+              <ion-input [readonly]="true" name="accessibility" [(ngModel)] ='heritageForm.accessibility' required></ion-input>
+ 
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      
+        <ion-row *ngIf="selectedCategory.name == 'HERITAGE'">
+          <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+            <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+              <ion-label class="labelform" position="floating">Date of Establishment</ion-label>
+              <ion-input [readonly]="true" [(ngModel)]="heritageForm.date_heritage" name="date_heritage" type="text" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+            <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+              <ion-label class="labelform"  position="floating">Guided Tours</ion-label>
+              <ion-input [readonly]="true" name="guidedtours" [(ngModel)] ='heritageForm.guidedtours' required ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+            <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+              <ion-label class="labelform"  position="floating">Photography/Video Policy</ion-label>
+              <ion-input [readonly]="true" name="photography" [(ngModel)] ='heritageForm.photography' required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      
+        <ion-row *ngIf="selectedCategory.name == 'HERITAGE'">
+          <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+            <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+              <ion-label class="labelform"  position="floating">Facilities</ion-label>
+                <ion-input [readonly]="true" name="facilities" [(ngModel)] ='heritageForm.facilities' required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      
+        <h1 *ngIf="selectedCategory.name == 'HERITAGE'" style="font-size: 18px; color: #21757F; font-weight: bold;">Rates</h1>
+      
+        <ion-row *ngIf="selectedCategory.name == 'HERITAGE'">
+          <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+            <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+              <ion-label class="labelform"  name="from" position="floating">Price Range</ion-label>
+              <ion-input [readonly]="true" name="rates" [(ngModel)]="heritageForm.rates" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
           <br>
           <ion-row>
             <ion-col>
               <ion-item>
-              <ion-textarea  [(ngModel)] = "bus_desc" name="bus_desc" rows="4" label="Description" labelPlacement="stacked"[readonly]="true"></ion-textarea>
+              <ion-textarea [readonly]="true" [(ngModel)] = "bus_desc" name="bus_desc" rows="4" label="Description" labelPlacement="stacked"[readonly]="true"></ion-textarea>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -258,8 +403,8 @@
             <ion-col>
               <h1 style="font-size: 12px; color: #21757F; font-weight: bold;">Photos</h1>
               <ion-item>
-                   <!-- DITO LALAGAY PHOTOS --> 
-                     
+                   <img *ngIf = "photoLink != ''" [src]="photoLink"/>
+                    <ion-label *ngIf = "photoLink == ''">No photo available</ion-label>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -268,7 +413,10 @@
             <ion-col>
               <h1 style="font-size: 12px; color: #21757F; font-weight: bold;">Certificates</h1>
               <ion-item>
-                   <!-- DITO LALAGAY PHOTOS -->   
+                <a  *ngIf = "certLink != ''" [href]="certLink" target="_blank">
+                  <ion-button>View Certificate</ion-button>
+                </a>
+                   
               </ion-item>
             </ion-col>
           </ion-row>

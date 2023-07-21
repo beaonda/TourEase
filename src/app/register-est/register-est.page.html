@@ -239,26 +239,14 @@
       </ion-item>
       </ion-col>
     </ion-row>
-
-    <!-- Fifth row -->
-    <ion-row class="try">
-      <ion-col class ="tablecol">
-        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CONTACT PERSON/s</h1>
-        <ion-item class="table-item">
-          <ion-grid class="table">
-            <ion-row class="table-row">
-              <ion-col class="columns" style="background-color: #21757F; color:white;font-weight: bolder;text-align: center;">Name</ion-col>
-              <ion-col class="columns"style="background-color: #21757F; color:white;font-weight: bolder;text-align: center;">Position</ion-col>
-              <ion-col class="columns"style="background-color: #21757F; color:white;font-weight: bolder;text-align: center;">Contact No.</ion-col>
-              <ion-col class="columns"style="background-color: #21757F; color:white;font-weight: bolder;text-align: center;">Email</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-col>
-    </ion-row>
     <br><br>
-    <ion-button expand="block" shape="round" size="medium" color="primary" class="regbutton" (click) = "addContact()">Add Contact Person</ion-button>
-    <div *ngIf="showContact == true">
+
+    <ion-row>
+      <ion-col>
+        <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">CONTACT DETAILS</h1>
+        </ion-col>
+    </ion-row>
+
       <ion-row>
         <ion-col>
           <ion-item>
@@ -273,7 +261,7 @@
             <ion-label class="labelform" position="floating">Position<span class="required">*</span></ion-label>
             <ion-select #conPos = "ngModel" [(ngModel)]="contact_pos" name="contact_pos" required>
               <ion-select-option value="Owner">Owner</ion-select-option>
-              <ion-select-option value="Representatives">Representatives</ion-select-option>
+              <ion-select-option value="Representatives">Representative</ion-select-option>
               <ion-select-option value="other">Other</ion-select-option>
             </ion-select>
           </ion-item>
@@ -288,13 +276,13 @@
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-label class="labelform" position="floating">Email Address<span class="required">*</span></ion-label>
-            <ion-input #conMail = "ngModel" [(ngModel)]="contact_email" name="contact_email" type="text" required></ion-input>
+            <ion-label class="labelform" position="floating">Email Address (Personal)</ion-label>
+            <ion-input #conMail = "ngModel" [(ngModel)]="contact_email" name="contact_email" type="text"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
-    </div>
-
+      <!-- <ion-button expand="block" shape="round" size="medium" color="primary" class="regbutton" (click) = "addContact()">Add Contact Person</ion-button>
+ -->
     <ion-row>
       <ion-col>
         <ion-item>
@@ -326,12 +314,10 @@
         </ion-item>
       </ion-col>
     </ion-row>
-  </ion-list>
 
   
            <!-- Render the appropriate form fields based on the selected category -->
 
-  <ion-list class="register-form">
     <ion-row>
       <ion-col>
         <ion-item *ngIf="selectedCategory.name == 'RESORT'">
@@ -376,7 +362,7 @@
       <ion-col>
         <ion-item *ngIf="selectedCategory.name == 'RESORT'">
           <ion-label class="labelform"  name="from" position="floating">Price Range</ion-label>
-          <ion-select #price = "ngModel" name="rates" [(ngModel)]="resortForm.from" required>
+          <ion-select #price = "ngModel" name="rates" [(ngModel)]="resortForm.rates" required>
             <ion-select-option *ngFor="let rate of rates" [value]="rate.value">{{ rate.value }}</ion-select-option>
           </ion-select>
           <ion-note slot="error" *ngIf="price.invalid && regForm.submitted">Please enter a valid input.</ion-note>
@@ -384,30 +370,224 @@
       </ion-col> 
     </ion-row>
 
-    <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 18px; color: #21757F; font-weight: bold;">Additional Information</h1>
+    
+    <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+      <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+        <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+         <ion-label class="labelform" position="floating">Name of Mountain</ion-label>
+         <ion-input [(ngModel)]="hikesandtrailsForm.name_mountain" name="name_mountain" type="text" required></ion-input>
+       </ion-item>
+      </ion-col>
+    </ion-row>
 
+    <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+      <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+        <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+          <ion-label class="labelform"  position="floating">Difficulty</ion-label>
+          <ion-select name="difficulty" [(ngModel)] ='hikesandtrailsForm.difficulty' required>
+            <ion-select-option value="easy">Easy</ion-select-option>
+            <ion-select-option value="moderate">Moderate</ion-select-option>
+            <ion-select-option value="hard">hard</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+        <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+          <ion-label class="labelform"  position="floating">Length</ion-label>
+          <ion-select name="length" [(ngModel)] ='hikesandtrailsForm.length' required>
+            <ion-select-option value="yes">km</ion-select-option>
+            <ion-select-option value="no">km</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+        <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+          <ion-label class="labelform"  position="floating">Elevation Gain</ion-label>
+          <ion-select name="elevation" [(ngModel)] ='hikesandtrailsForm.elevation' required>
+            <ion-select-option value="yes">m</ion-select-option>
+            <ion-select-option value="no">m</ion-select-option>
+          </ion-select>
+       </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+     <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+       <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+         <ion-label class="labelform"  position="floating">Route Type</ion-label>
+         <ion-select name="route" [(ngModel)] ='hikesandtrailsForm.route' required>
+           <ion-select-option value="loop">Loop</ion-select-option>
+           <ion-select-option value="point">Point to Point</ion-select-option>
+           <ion-select-option value="out">Out and Back</ion-select-option>
+         </ion-select>
+      </ion-item>
+     </ion-col>
+     <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+      <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+        <!-- Render resort form fields -->
+        <ion-label class="labelform"  position="floating">Suitability</ion-label>
+        <ion-select name="suitability" [(ngModel)] ='hikesandtrailsForm.suitability' required [multiple]="true">
+          <ion-select-option value="pet">Pet Friendly</ion-select-option>
+          <ion-select-option value="wheelchair">Wheelchair Friendly</ion-select-option>
+          <ion-select-option value="kid">Kid Friendly</ion-select-option>
+          <ion-select-option value="stroller">Stroller Friendly</ion-select-option>
+          <ion-select-option value="paved">Paved</ion-select-option>
+          <ion-select-option value="partiallypaved">Partially Paved</ion-select-option>
+        </ion-select>
+     </ion-item>
+    </ion-col>  
+   </ion-row>
+
+   <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+    <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+      <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+       <ion-label class="labelform" position="floating">Other Activities</ion-label>
+       <ion-input [(ngModel)]="hikesandtrailsForm.act" name="act" type="text" required></ion-input>
+     </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <h1 *ngIf="selectedCategory.name == 'HIKES AND TRAILS'" style="font-size: 18px; color: #21757F; font-weight: bold;">Rates</h1>
+  <ion-row *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+    <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+      <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+        <ion-label class="labelform"  position="floating">Type of Fee</ion-label>
+        <ion-select name="type_fee" [(ngModel)] ='hikesandtrailsForm.type_fee' required>
+          <ion-select-option value="RegFee">Registration Fee</ion-select-option>
+          <ion-select-option value="EcoFee">Tourism/Ecological Fee</ion-select-option>
+          <ion-select-option value="AdFee">Admission/Entrance Fee</ion-select-option>
+        </ion-select>
+     </ion-item>
+    </ion-col>
+    <ion-col *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+      <ion-item *ngIf="selectedCategory.name == 'HIKES AND TRAILS'">
+        <ion-label class="labelform"  name="from" position="floating">Price Range</ion-label>
+        <ion-select name="rates" [(ngModel)]="hikesandtrailsForm.rates" required>
+          <ion-select-option *ngFor="let rate of rates" [value]="rate.value">{{ rate.value }}</ion-select-option>
+        </ion-select>
+     </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <!--Heritage-->
+  <ion-row *ngIf="selectedCategory.name == 'HERITAGE'">
+    <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+      <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+        <ion-label class="labelform"  position="floating">Category</ion-label>
+        <ion-select name="categ" [(ngModel)] ='heritageForm.categ' required [multiple]="true">
+          <ion-select-option value="cate1">UNESCO World Heritage Site</ion-select-option>
+          <ion-select-option value="cate2">National Heritage Site</ion-select-option>
+          <ion-select-option value="cate3">Local Heritage Site</ion-select-option>
+          <ion-select-option value="cate4">Intangible Cultural Heritage</ion-select-option>
+          <ion-select-option value="cate5">Natural Heritage Site</ion-select-option>
+          <ion-select-option value="cate6">Religious Heritage Site</ion-select-option>
+          <ion-select-option value="cate7">Industrial Heritage Site</ion-select-option>
+          <ion-select-option value="cate8">Archaeological Heritage Site</ion-select-option>
+          <ion-select-option value="cate9">Architectural Heritage Site</ion-select-option>
+          <ion-select-option value="cate10">Literary Heritage Site</ion-select-option>
+          <ion-select-option value="cate11">Cultural Landscape</ion-select-option>
+          <ion-select-option value="cate12">Traditional Craft Heritage Site</ion-select-option>
+          <ion-select-option value="cate13">Indigenous Heritage Site</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+      <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+        <ion-label class="labelform"  position="floating">Accessibility</ion-label>
+        <ion-select name="accessibility" [(ngModel)] ='heritageForm.accessibility' required [multiple]="true">
+          <ion-select-option value="Wheelchair">Wheelchair Ramps</ion-select-option>
+          <ion-select-option value="Braille">Braille Signage</ion-select-option>
+          <ion-select-option value="Restrooms">Accesible Restrooms</ion-select-option>
+          <ion-select-option value="Augio Guides">Audio Guides for Visually Impaired</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="selectedCategory.name == 'HERITAGE'">
+    <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+      <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+        <ion-label class="labelform" position="floating">Date of Establishment</ion-label>
+        <ion-input [(ngModel)]="heritageForm.date_heritage" name="date_heritage" type="text" required></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+      <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+        <ion-label class="labelform"  position="floating">Guided Tours</ion-label>
+        <ion-select name="guidedtours" [(ngModel)] ='heritageForm.guidedtours' required >
+          <ion-select-option value="Guided">Yes, guided tours available</ion-select-option>
+          <ion-select-option value="Not Guided">No, self-guided tours only</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+      <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+        <ion-label class="labelform"  position="floating">Photography/Video Policy</ion-label>
+        <ion-select name="photography" [(ngModel)] ='heritageForm.photography' required [multiple]="true">
+          <ion-select-option value="p1">Photography Allowed</ion-select-option>
+          <ion-select-option value="p2">Videography Allowed</ion-select-option>
+          <ion-select-option value="p3">Restrictions on Flash Photography</ion-select-option>
+          <ion-select-option value="p4">Restrictions on commercial photography/videography</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="selectedCategory.name == 'HERITAGE'">
+    <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+      <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+        <ion-label class="labelform"  position="floating">Facilities</ion-label>
+          <ion-select name="facilities" [(ngModel)] ='heritageForm.facilities' required [multiple]="true">
+            <ion-select-option value="f1">Restrooms</ion-select-option>
+            <ion-select-option value="f2">Parking area</ion-select-option>
+            <ion-select-option value="f3">Visitor center</ion-select-option>
+            <ion-select-option value="f4">Cafeteria/Restaurant</ion-select-option>
+            <ion-select-option value="f5">Picnic area</ion-select-option>
+            <ion-select-option value="f6">Gift shop</ion-select-option>
+            <ion-select-option value="f7">Souvenir shop</ion-select-option>
+            <ion-select-option value="f8">Drinking water stations</ion-select-option>
+          </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <h1 *ngIf="selectedCategory.name == 'HERITAGE'" style="font-size: 18px; color: #21757F; font-weight: bold;">Rates</h1>
+
+  <ion-row *ngIf="selectedCategory.name == 'HERITAGE'">
+    <ion-col *ngIf="selectedCategory.name == 'HERITAGE'">
+      <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
+        <ion-label class="labelform"  name="from" position="floating">Price Range</ion-label>
+        <ion-select name="rates" [(ngModel)]="heritageForm.rates" required>
+          <ion-select-option *ngFor="let rate of rates" [value]="rate.value">{{ rate.value }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+<!--Additional Info-->
+    <h1 style="font-size: 18px; color: #21757F; font-weight: bold;">Additional Information</h1>
     <ion-row>
       <ion-col>
-        <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+        <ion-item>
           <ion-label class="labelform" position="floating">Description</ion-label>
-          <ion-textarea #desc = "ngModel" [(ngModel)]="resortForm.description"  name="description" type="text" required rows="4" placeholder="Enter description here"></ion-textarea> 
+          <ion-textarea #desc = "ngModel" [(ngModel)]="description"  name="description" type="text" required rows="4" placeholder="Enter description here"></ion-textarea> 
          </ion-item>
         </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
-        <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 15px; color: #21757F; font-weight: bold;">Photos</h1>
-        <ion-item *ngIf="selectedCategory.name == 'RESORT'">
+        <h1 style="font-size: 15px; color: #21757F; font-weight: bold;">Photos</h1>
+        <ion-item >
             <ion-icon size="large"style="color: #21757F; margin-right: 12px;"name="images-outline"></ion-icon>
-            <ion-button name="photos" (click)="takePicture()">Upload Photos</ion-button>
+            <ion-button name="photos" (click)="takePicture()">Upload Photo</ion-button>
          </ion-item>
         </ion-col>
       <ion-col>
-        <h1 *ngIf="selectedCategory.name == 'RESORT'" style="font-size: 15px; color: #21757F; font-weight: bold;">Certificates</h1>
-        <ion-item *ngIf="selectedCategory.name == 'RESORT'">
-          <ion-icon size="large" style="color: #21757F; margin-right: 12px;" name="document-attach-outline"></ion-icon>
-          <ion-button name="certs">Upload Certidicates</ion-button>
+        <h1 style="font-size: 15px; color: #21757F; font-weight: bold;">Certificates</h1>
+        <ion-item>
+          <ion-icon size="large" style="color: #21757F; margin-right: 12px;margin-top:-30px;" name="document-attach-outline"></ion-icon>
+          <ion-input type="file"  (change)="selectFile($event)" name="certs"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -417,16 +597,7 @@
           <img *ngIf="image" [src]="image">
         </div>
       </ion-col>
-      <ion-col>
-
-      </ion-col>
     </ion-row>
-
-    <ion-item *ngIf="selectedCategory.name == 'ESTABLISHMENTS'">
-    </ion-item>
-      
-    <ion-item *ngIf="selectedCategory.name == 'HERITAGE'">
-    </ion-item>
   </ion-list>
 
   <ion-button type="submit" expand="block" shape="round" size="medium" color="primary" class="register-button">Register</ion-button>

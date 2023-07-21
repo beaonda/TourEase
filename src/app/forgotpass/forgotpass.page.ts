@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forgotpass.page.scss'],
 })
 export class ForgotpassPage implements OnInit {
-
-  setOpen(isOpen: boolean) {
-  
+  isOpen = false;
+  link:any;
+  setOpen() {
+    this.isOpen = true;
   }
   constructor() { }
 

@@ -76,18 +76,14 @@
         <ion-button class="explore-button" shape="round">Explore</ion-button>
       </div>
     </ion-card>
-    <ion-card class="estab-info">
-
-      <img class="home-estab" src="assets/home/Nasugbu-Batulao.jpg" />
+    <ion-card class="estab-info" *ngFor = "let estab of estabList">
+      <img class="home-estab" [src]="estab.photoLink" />
       <ion-card-header>
-        <ion-card-title class="estab-name">MOUNT BATULAO </ion-card-title>
-        <ion-card-subtitle class="municipality">Nasugbu Batangas <br></ion-card-subtitle>
+        <ion-card-title class="estab-name">{{estab.bus_name}}</ion-card-title>
+        <ion-card-subtitle class="municipality">{{estab.bus_brgy + " " + estab.bus_city}}<br></ion-card-subtitle>
       </ion-card-header>
       <ion-card-content class="estab-cont">
-        Want to get away from the city? Mt. Batulao is regarded as one of the best destinations for trekking and mountain climbing because of its accessibility to the metropolis,
-        particularly for beginners. You'll be able to take in the fresh breeze, stunning rock formations, and vast meadows in two to three hours. The stunning 360-degree panorama 
-        of Batangas and its adjacent cities, as well as the gorilla-shaped ridge line near the summit, are also must-sees. The ascent is not particularly strenuous. Because the 
-        residents are so welcoming and friendly, safety is also not a concern. You only need to carry a spirit of pleasure and adventure on your journey up to Mt.  Batulao. <br>
+        {{estab.bus_desc}}
       </ion-card-content>
       <div class="explore-container">
         <ion-button class="explore-button" shape="round">Explore</ion-button>
